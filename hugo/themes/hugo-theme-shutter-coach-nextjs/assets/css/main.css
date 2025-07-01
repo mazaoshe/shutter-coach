@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+
+@plugin "@tailwindcss/typography";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  --border: #e5e7eb;
+  --input: #f3f4f6;
+  --ring: #d1d5db;
+
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+
+  --secondary: #f3f4f6;
+  --secondary-foreground: #171717;
+
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+
+  --muted: #f9fafb;
+  --muted-foreground: #6b7280;
+
+  --accent: #f1f5f9;
+  --accent-foreground: #171717;
+
+  --popover: #ffffff;
+  --popover-foreground: #171717;
+
+  --card: #ffffff;
+  --card-foreground: #171717;
+
+  --sidebar-background: #f8fafc;
+  --sidebar-foreground: #171717;
+  --sidebar-primary: #2563eb;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f1f5f9;
+  --sidebar-accent-foreground: #171717;
+  --sidebar-border: #e5e7eb;
+  --sidebar-ring: #d1d5db;
+
+  --radius: 0.5rem;
+  --font-sans: var(--font-geist-sans, Arial, Helvetica, sans-serif);
+  --font-mono: var(--font-geist-mono, monospace);
+}
+
+
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}

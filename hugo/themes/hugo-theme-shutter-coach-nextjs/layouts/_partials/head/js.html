@@ -1,0 +1,28 @@
+{{- with resources.Get "js/main.js" }}
+{{- $opts := dict
+"minify" (not hugo.IsDevelopment)
+"sourceMap" (cond hugo.IsDevelopment "external" "")
+"targetPath" "js/main.js"
+}}
+{{- with . | js.Build $opts }}
+{{- if hugo.IsDevelopment }}
+<script src="{{ .RelPermalink }}"></script>
+{{- else }}
+{{- with . | fingerprint }}
+<script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>
+{{- end }}
+{{- end }}
+{{- end }}
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KQGXMC724B"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag () { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-KQGXMC724B');
+</script>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5480343618506855"
+    crossorigin="anonymous"></script>
+{{- end }}

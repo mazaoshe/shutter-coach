@@ -1,0 +1,24 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
+<meta name="keywords" content="{{.Params.keywords }}" />
+<meta name="description"
+    content="{{ if .IsHome }}{{ site.Params.Description }}{{ else }}{{ .Description }}{{ end }}" />
+<meta name="author" content="ShutterCoach Team" />
+<meta name="robots" content="index, follow" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="ShutterCoach – Weather-Based Camera Settings for Photographers" />
+<meta property="og:description"
+    content="Get AI-powered camera setting suggestions based on current weather, time, and scene. Perfect for beginners and hobbyists." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="{{ site.BaseURL }}" />
+<meta property="og:image" content="{{ site.BaseURL }}og-image.webp" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="ShutterCoach – Weather-Based Camera Settings" />
+<meta name="twitter:description"
+    content="Instant camera settings based on weather, time, and scene. Shoot smarter with ShutterCoach." />
+<meta name="twitter:image" content="{{ site.BaseURL }}og-image.webp" />
+<link rel="icon" href="/favicon.ico" />
+
+{{ partialCached "head/css.html" . }}
+{{ partialCached "head/js.html" . }}
