@@ -1,7 +1,250 @@
 {{ define "main" }}
-  {{ .Content }}
-  {{ range site.RegularPages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-    {{ .Summary }}
-  {{ end }}
+<div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-md border-b border-white/20 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex items-center justify-between">
+                <a href="/" class="flex items-center space-x-3">
+                    <div class="bg-gradient-to-r from-blue-600 to-indigo-600 p-2 rounded-xl">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z">
+                            </path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1
+                            class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                            ShutterCoach
+                        </h1>
+                        <p class="text-sm text-gray-600">Smart Camera Settings Assistant</p>
+                    </div>
+                </a>
+                <div class="flex items-center space-x-6">
+                    <a href="/categories/docs" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+                        Docs
+                    </a>
+                    <a href="/about/about" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+                        About
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Hero Section -->
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">
+                Perfect Camera Settings, <span class="text-blue-600">Every Time</span>
+            </h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Get instant camera setting recommendations based on your scene, weather conditions, and time of day.
+                Perfect for beginners and hobbyists who want professional results.
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+            <!-- Left Column - Scene & Weather Selection -->
+            <div class="lg:col-span-2 space-y-8">
+                <!-- Camera Mode Selector -->
+                <div class="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-lg">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                        ⚙️ Priority Mode
+                    </h3>
+                    <div id="priority-selector">
+                        <!-- Priority selector will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Scene Selection -->
+                <div class="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-lg">
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-6">Choose Your Scene</h3>
+                    <div id="scene-selector">
+                        <!-- Scene selector will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Weather & Time Conditions -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-lg">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z">
+                                </path>
+                            </svg>
+                            Weather Conditions
+                        </h3>
+                        <div id="weather-input">
+                            <!-- Weather input will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-lg">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                            <span id="time-icon" class="mr-2">☀️</span>
+                            <span>Time of Day</span>
+                        </h3>
+                        <div class="grid grid-cols-2 gap-3">
+                            <button data-time="sunrise"
+                                class="time-button p-3 rounded-xl border-2 transition-all capitalize border-gray-200 bg-white hover:border-gray-300"
+                                onclick="handleTimeOfDayChange('sunrise')">sunrise</button>
+                            <button data-time="day"
+                                class="time-button p-3 rounded-xl border-2 transition-all capitalize border-blue-500 bg-blue-50 text-blue-700"
+                                onclick="handleTimeOfDayChange('day')">day</button>
+                            <button data-time="sunset"
+                                class="time-button p-3 rounded-xl border-2 transition-all capitalize border-gray-200 bg-white hover:border-gray-300"
+                                onclick="handleTimeOfDayChange('sunset')">sunset</button>
+                            <button data-time="night"
+                                class="time-button p-3 rounded-xl border-2 transition-all capitalize border-gray-200 bg-white hover:border-gray-300"
+                                onclick="handleTimeOfDayChange('night')">night</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Column - Camera Settings & Tips -->
+            <div class="space-y-6">
+                <!-- Camera Settings -->
+                <div id="camera-settings">
+                    <!-- Camera settings will be populated by JavaScript -->
+                </div>
+
+                <!-- Shooting Tips -->
+                <div id="shooting-tips">
+                    <!-- Shooting tips will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="mt-16 grid md:grid-cols-3 gap-8">
+            <div class="text-center p-6">
+                <div
+                    class="bg-gradient-to-r from-blue-500 to-indigo-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z">
+                        </path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">Smart Recommendations</h3>
+                <p class="text-gray-600">AI-powered settings based on real shooting conditions and photography best
+                    practices.</p>
+            </div>
+
+            <div class="text-center p-6">
+                <div
+                    class="bg-gradient-to-r from-green-500 to-emerald-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
+                        </path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">Weather Integration</h3>
+                <p class="text-gray-600">Automatic adjustments based on lighting conditions, weather, and time of day.
+                </p>
+            </div>
+
+            <div class="text-center p-6">
+                <div
+                    class="bg-gradient-to-r from-purple-500 to-pink-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
+                        </path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">Pro Tips Included</h3>
+                <p class="text-gray-600">Learn as you shoot with contextual tips and techniques for better photography.
+                </p>
+            </div>
+        </div>
+
+        <!-- Learn More Section -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
+            <div class="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-gray-100">
+                <h2 class="text-2xl font-bold text-center text-gray-900 mb-6">Learn More</h2>
+                <ul class="space-y-3 text-center flex justify-between">
+                    <li>
+                        <a href="/about/about"
+                            class="text-gray-700 hover:text-blue-600 transition-colors flex items-center justify-center space-x-2">
+                            <span>👉</span>
+                            <span>About ShutterCoach</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/other/how-it-works"
+                            class="text-gray-700 hover:text-blue-600 transition-colors flex items-center justify-center space-x-2">
+                            <span>🔍</span>
+                            <span>How it works</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/other/privacy-policy"
+                            class="text-gray-700 hover:text-blue-600 transition-colors flex items-center justify-center space-x-2">
+                            <span>🛡</span>
+                            <span>Privacy Policy</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/other/terms"
+                            class="text-gray-700 hover:text-blue-600 transition-colors flex items-center justify-center space-x-2">
+                            <span>📜</span>
+                            <span>Terms of Service</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white mt-16 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-600 mb-4">Copyright <span id="current-year">2025</span>. All rights reserved.</p>
+            <p class="text-gray-600">
+                © 2025 ShutterCoach |
+                <a href="/about/about" class="text-gray-600 hover:text-blue-600 transition-colors">
+                    About
+                </a>
+                |
+                <a href="/other/contact" class="text-gray-600 hover:text-blue-600 transition-colors">
+                    Contact
+                </a>
+                |
+                <a href="/other/privacypolicy" class="text-gray-600 hover:text-blue-600 transition-colors">
+                    Privacy Policy
+                </a>
+                |
+                <a href="/other/how-it-works" class="text-gray-600 hover:text-blue-600 transition-colors">
+                    How It Works
+                </a>
+                |
+                <a href="/other/terms" class="text-gray-600 hover:text-blue-600 transition-colors">
+                    Terms of Service
+                </a>
+            </p>
+        </div>
+    </footer>
+</div>
+
+<!-- Load JavaScript files -->
+{{ $cameraCalculator := resources.Get "js/cameraCalculator.js" }}
+{{ $weather := resources.Get "js/weather.js" }}
+{{ $components := resources.Get "js/components.js" }}
+{{ $app := resources.Get "js/app.js" }}
+
+<script>{{ $cameraCalculator.Content | safeJS }}</script>
+<script>{{ $weather.Content | safeJS }}</script>
+<script>{{ $components.Content | safeJS }}</script>
+<script>{{ $app.Content | safeJS }}</script>
 {{ end }}

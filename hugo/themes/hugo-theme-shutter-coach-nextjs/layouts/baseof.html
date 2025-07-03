@@ -1,17 +1,83 @@
 <!DOCTYPE html>
 <html lang="{{ site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
 <head>
-  {{ partial "head.html" . }}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{{ if .IsHome }}{{ site.Title }} – Weather-Based Camera Settings for Photographers{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
+
+  <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}Get AI-powered camera settings recommendations based on current weather, scene type, and light conditions. Perfect for beginner photographers.{{ end }}">
+  <meta name="keywords" content="camera settings, weather photography, aperture priority, ISO calculator, shutter speed tips, photography tools, beginner photography, sunlight portrait setup, SEO for photographers">
+  <meta name="author" content="ShutterCoach Team">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ .Permalink }}">
+  <meta property="og:title" content="{{ if .IsHome }}{{ site.Title }} – Weather-Based Camera Settings{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}">
+  <meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else }}Instant camera settings based on weather, time, and scene. Shoot smarter with ShutterCoach.{{ end }}">
+  <meta property="og:image" content="{{ site.BaseURL }}/images/og-image.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="{{ .Permalink }}">
+  <meta property="twitter:title" content="{{ if .IsHome }}{{ site.Title }} – Weather-Based Camera Settings{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}">
+  <meta property="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else }}Instant camera settings based on weather, time, and scene. Shoot smarter with ShutterCoach.{{ end }}">
+  <meta property="twitter:image" content="{{ site.BaseURL }}/images/og-image.jpg">
+
+  <link rel="icon" href="{{ "favicon.ico" | relURL }}">
+
+  <!-- Tailwind CSS -->
+  <link href="{{ "css/main.css" | relURL }}" rel="stylesheet">
+
+  <!-- Custom CSS for slider styling -->
+  <style>
+    .slider::-webkit-slider-thumb {
+      appearance: none;
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      background: #2563eb;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .slider::-moz-range-thumb {
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      background: #2563eb;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .slider::-webkit-slider-track {
+      height: 8px;
+      border-radius: 4px;
+      background: #e5e7eb;
+    }
+
+    .slider::-moz-range-track {
+      height: 8px;
+      border-radius: 4px;
+      background: #e5e7eb;
+      border: none;
+    }
+  </style>
+
+  <!-- Analytics -->
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?2cc9db8f3dd6dd2d1f31cdbbfd4cb45c";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 </head>
-<body>
-  <header>
-    {{ partial "header.html" . }}
-  </header>
-  <main class="bg-[#F2F8FE]">
-    {{ block "main" . }}{{ end }}
-  </main>
-  <footer>
-    {{ partial "footer.html" . }}
-  </footer>
+<body class="antialiased">
+  {{ block "main" . }}{{ end }}
 </body>
 </html>

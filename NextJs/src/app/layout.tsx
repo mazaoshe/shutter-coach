@@ -41,6 +41,20 @@ export default function RootLayout({
                 <meta name="twitter:description" content="Instant camera settings based on weather, time, and scene. Shoot smarter with ShutterCoach." />
                 <meta name="twitter:image" content="https://shuttercoach.example.com/og-image.jpg" />
                 <link rel="icon" href="/favicon.ico" />
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `
+            var _hmt = _hmt || [];
+            (function() {
+                var hm = document.createElement("script");
+                hm.src = "https://hm.baidu.com/hm.js?2cc9db8f3dd6dd2d1f31cdbbfd4cb45c";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+        `,
+                    }}
+                />
+
             </head>
             <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}
