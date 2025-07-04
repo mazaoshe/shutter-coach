@@ -19,8 +19,9 @@
  * @param {number} longitude - Longitude coordinate
  * @returns {Promise<{ev: number, weather: WeatherCondition, timeOfDay: TimeOfDay}>}
  */
-async function getBaseEVWithWeather(latitude, longitude) {
+async function getBaseEVWithWeather (latitude, longitude) {
     try {
+        document.getElementById('loading-overlay').style.display = 'flex';
         // Use Open-Meteo API for weather data (free, no API key required)
         const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,cloudcover,weathercode&daily=sunrise,sunset&timezone=auto`;
 
@@ -70,7 +71,7 @@ async function getBaseEVWithWeather(latitude, longitude) {
 
         const weatherCondition = getWeatherCondition(weatherCode, cloudiness);
         const timeOfDay = getTimeOfDayFromSun(now, sunrise, sunset);
-
+        hideLoading();
         return {
             ev: baseEV,
             weather: weatherCondition,
@@ -83,6 +84,7 @@ async function getBaseEVWithWeather(latitude, longitude) {
         };
     } catch (error) {
         console.error('Error fetching weather data:', error);
+        hideLoading();
         // Return default values if weather fetch fails
         return {
             ev: 12, // Default sunny day EV
@@ -96,6 +98,16 @@ async function getBaseEVWithWeather(latitude, longitude) {
         };
     }
 }
+// filepath: /Volumes/KeSilentA/Code/personal-code/MySite/shutter-coach/hugo/themes/hugo-theme-shutter-coach-nextjs/assets/js/app.js
+function hideLoading () {
+    const overlay = document.getElementById('loading-overlay');
+    if (overlay) {
+        overlay.classList.add('fade-out');
+        setTimeout(() => {
+            overlay.style.display = 'none';
+        }, 600); // 与CSS动画时长一致
+    }
+}
 
 /**
  * Convert weather code and cloud cover to weather condition
@@ -103,7 +115,7 @@ async function getBaseEVWithWeather(latitude, longitude) {
  * @param {number} cloudCover - Cloud cover percentage (0-100)
  * @returns {WeatherCondition}
  */
-function getWeatherCondition(weatherCode, cloudCover) {
+function getWeatherCondition (weatherCode, cloudCover) {
     // WMO Weather interpretation codes
     if (weatherCode >= 51 && weatherCode <= 82) {
         // Rain, drizzle, snow
@@ -127,7 +139,7 @@ function getWeatherCondition(weatherCode, cloudCover) {
  * @param {number} sunset - Sunset timestamp in seconds
  * @returns {number} Sun elevation angle
  */
-function calculateSunElevation(now, sunrise, sunset) {
+function calculateSunElevation (now, sunrise, sunset) {
     if (now < sunrise || now > sunset) {
         return -10; // Night
     }
@@ -146,7 +158,7 @@ function calculateSunElevation(now, sunrise, sunset) {
  * @param {number} sunset - Sunset timestamp in seconds
  * @returns {TimeOfDay}
  */
-function getTimeOfDayFromSun(now, sunrise, sunset) {
+function getTimeOfDayFromSun (now, sunrise, sunset) {
     const nowDate = new Date(now * 1000);
     const sunriseDate = new Date(sunrise * 1000);
     const sunsetDate = new Date(sunset * 1000);
@@ -173,7 +185,7 @@ function getTimeOfDayFromSun(now, sunrise, sunset) {
  * @param {string} timeString - ISO time string
  * @returns {TimeOfDay}
  */
-function getTimeOfDay(timeString) {
+function getTimeOfDay (timeString) {
     const date = new Date(timeString);
     const hour = date.getHours();
 
@@ -194,7 +206,7 @@ function getTimeOfDay(timeString) {
  * @param {TimeOfDay} timeOfDay - Time of day
  * @returns {number} Base EV value
  */
-function calculateBaseEV(weather, timeOfDay) {
+function calculateBaseEV (weather, timeOfDay) {
     // Base EV values for different conditions
     const baseEVTable = {
         sunny: { sunrise: 11, day: 15, sunset: 12, night: 6 },
@@ -211,7 +223,7 @@ function calculateBaseEV(weather, timeOfDay) {
  * @param {WeatherCondition} weather - Weather condition
  * @returns {string} Icon class or emoji
  */
-function getWeatherIcon(weather) {
+function getWeatherIcon (weather) {
     const icons = {
         sunny: '☀️',
         cloudy: '⛅',
@@ -226,7 +238,7 @@ function getWeatherIcon(weather) {
  * @param {WeatherCondition} weather - Weather condition
  * @returns {string} Weather description
  */
-function getWeatherDescription(weather) {
+function getWeatherDescription (weather) {
     const descriptions = {
         sunny: 'Clear and bright conditions',
         cloudy: 'Partly cloudy with some shadows',
@@ -241,7 +253,7 @@ function getWeatherDescription(weather) {
  * @param {TimeOfDay} timeOfDay - Time of day
  * @returns {string} Time description
  */
-function getTimeDescription(timeOfDay) {
+function getTimeDescription (timeOfDay) {
     const descriptions = {
         sunrise: 'Golden hour morning light',
         day: 'Bright daylight conditions',
@@ -257,29 +269,29 @@ function getTimeDescription(timeOfDay) {
  * @param {TimeOfDay} timeOfDay - Time of day
  * @returns {string[]} Array of special considerations
  */
-function getSpecialConsiderations(weather, timeOfDay) {
+function getSpecialConsiderations (weather, timeOfDay) {
     const considerations = [];
-    
+
     if (weather === 'rainy') {
         considerations.push('Protect your camera from moisture');
         considerations.push('Consider using a lens hood');
     }
-    
+
     if (timeOfDay === 'night') {
         considerations.push('Use a tripod for stability');
         considerations.push('Consider using manual focus');
     }
-    
+
     if (timeOfDay === 'sunrise' || timeOfDay === 'sunset') {
         considerations.push('Golden hour - great for warm tones');
         considerations.push('Light changes quickly - work fast');
     }
-    
+
     if (weather === 'overcast') {
         considerations.push('Soft, even lighting - great for portraits');
         considerations.push('Colors may appear muted');
     }
-    
+
     return considerations;
 }
 

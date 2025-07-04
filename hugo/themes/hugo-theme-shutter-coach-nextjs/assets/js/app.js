@@ -7,7 +7,7 @@ let appState = {
     timeOfDay: 'day',
     initialEv: 12,
     ev: 0,
-    priorityMode: 'manual',
+    priorityMode: 'shutter',
     cameraSettings: null,
     isLoading: false
 };

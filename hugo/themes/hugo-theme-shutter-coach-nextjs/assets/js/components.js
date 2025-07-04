@@ -55,7 +55,7 @@ function createSceneSelector(selectedScene) {
     const sceneButtons = scenes.map(scene => {
         const isSelected = selectedScene === scene.type;
         const selectedClasses = isSelected 
-            ? 'border-blue-500 bg-blue-50 scale-105' 
+            ? 'border-blue-500 bg-blue-50 scale-102' 
             : 'border-gray-200 bg-white hover:border-gray-300 hover:scale-102';
         const gradientOpacity = isSelected ? 'opacity-10' : 'group-hover:opacity-5';
 
@@ -183,7 +183,7 @@ function createCameraPrioritySelector(selectedMode) {
     const modeButtons = modes.map(mode => {
         const isSelected = selectedMode === mode.type;
         const selectedClasses = isSelected 
-            ? 'border-blue-500 bg-blue-50 scale-105' 
+            ? 'border-blue-500 bg-blue-50 scale-102' 
             : 'border-gray-200 bg-white hover:border-gray-300 hover:scale-102';
         const gradientOpacity = isSelected ? 'opacity-10' : 'group-hover:opacity-5';
 
