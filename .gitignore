@@ -1,9 +1,7 @@
 # Existing ignore rules
-NextJs/.next/
-NextJs/node_modules/
+node_modules/
 hugo/node_modules/
 hugo/public/
-hugo/themes/hugo-theme-shutter-coach-nextjs/node_modules/
 hugo/themes/hugo-theme-shutter-coach/node_modules/
 NextJs/out/
 NextJs/.DS_Store
