@@ -16,7 +16,7 @@
         <!-- 文章列表 -->
         <section class="w-full">
             <ul class="space-y-6">
-                {{ range .Pages }}
+                {{ range .Paginator.Pages }}
                 <li class="border-b pb-4 border-gray-200 dark:border-gray-700">
                     <h2 class="text-2xl font-semibold mb-2">
                         <a href="{{ .RelPermalink }}" class="hover:underline">{{ .LinkTitle }}</a>
@@ -28,6 +28,19 @@
                 {{ end }}
             </ul>
         </section>
+
+        <!-- 分页导航 -->
+        <nav class="flex justify-between items-center mt-10">
+            {{ if .Paginator.HasPrev }}
+            <a href="{{ .Paginator.Prev.URL }}" class="text-blue-600 hover:underline">&larr; Previous</a>
+            {{ else }}
+            <div></div>
+            {{ end }}
+
+            {{ if .Paginator.HasNext }}
+            <a href="{{ .Paginator.Next.URL }}" class="text-blue-600 hover:underline">Next &rarr;</a>
+            {{ end }}
+        </nav>
     </div>
 </article>
 {{ end }}
