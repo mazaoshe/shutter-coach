@@ -3,7 +3,7 @@ title: "How to Use Foreground to Create Depth in Your Photos"
 date: 2025-06-30T10:00:00+08:00
 description: "Learn how to use foreground elements like rocks, flowers, and lines to add depth and interest to your landscape and travel photography."
 keywords: ["foreground photography", "depth in photos", "landscape photography tips", "composition techniques", "photography for beginners"]
-categories: ["Photography Tips"]
+categories: ["docs"]
 tags: ["composition", "landscape"]
 draft: false
 ---

@@ -3,7 +3,7 @@ title: "How to Get Natural Portrait Poses Every Time"
 date: 2025-06-30T10:00:00+08:00
 description: "Learn simple yet effective techniques to capture natural and engaging portrait poses, whether you're shooting business portraits or fashion photography."
 keywords: ["natural portrait poses", "posing techniques", "photography tips", "portrait photography", "Karl Taylor"]
-categories: ["photography"]
+categories: ["docs"]
 tags: ["portraits", "posing"]
 draft: false
 ---
