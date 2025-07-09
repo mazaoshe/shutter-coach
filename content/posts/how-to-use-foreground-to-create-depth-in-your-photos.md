@@ -43,6 +43,8 @@ Changing your viewpoint can transform a flat scene into a dynamic one. For examp
 
 The best way to master foregrounds is to experiment. Take multiple shots with different elements and angles. Review them later to see what works.
 
+
 **Example:** A sunset shot with rocks in the foreground feels more immersive than just the sky.
 
-[Read original article ↗](https://example.com)
+Want help matching your composition style with camera settings? [ShutterCoach](https://shuttercoach.com/) offers suggestions tailored to your scene and light — a great way to pair depth-driven composition with the right exposure setup.
+

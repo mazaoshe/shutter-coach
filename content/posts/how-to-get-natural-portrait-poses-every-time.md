@@ -34,4 +34,4 @@ For dynamic shots, simulate movement without the unpredictability of walking pos
 
 Not everyone is a professional model. Pay attention to your subject’s comfort and strengths. Some people relax when given clear directions, while others prefer a more conversational approach. Tailor your guidance to their personality for authentic, natural-looking results.
 
-[Read original article ↗](https://example.com)
+Looking to pair these posing tips with the right lighting and camera settings? [ShutterCoach](https://shuttercoach.com/) offers tailored suggestions based on your local conditions—helping beginners capture natural, well-lit portraits every time.

@@ -38,6 +38,4 @@ High-resolution cameras and meticulous editing used to define pro work. But soci
 
 Photography once prized originality, but social media algorithms favor familiar, trend-driven content. Replicating popular styles often garners more likes than unique perspectives.
 
-**Tip for Beginners:** Balance trends with your personal style. Use trending hashtags, but don’t lose your creative voice.
-
-[Read original article ↗]({{link}})
+Want more camera setting tips based on real-world conditions? Explore more on [ShutterCoach](https://shuttercoach.com/) — a photography assistant built to guide beginners through light, weather, and style choices. Whether you're just starting or revisiting fundamentals, it's a hands-on way to get inspired.
