@@ -3,7 +3,7 @@ title: What Is Aperture in Photography? A Beginner-Friendly Guide to Better Phot
 url: what-is-aperture-in-photography
 aliases: 
 date: 2025-07-27T09:13:05+08:00
-draft: true
+draft: false
 tags:
   - photography-basics
   - aperture
