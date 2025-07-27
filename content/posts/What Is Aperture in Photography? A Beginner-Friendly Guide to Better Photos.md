@@ -10,7 +10,8 @@ tags:
   - exposure-triangle
   - depth-of-field
   - beginner-guide
-categories: 
+categories:
+  - docs
 keywords:
   - what is aperture in photography
   - aperture vs depth of field
@@ -24,6 +25,7 @@ featured: false
 slug: 
 hot:
 ---
+
 ## **What Is Aperture in Photography?**
 
 ![](images/image-placeholder/camera%20lens.webp)
