@@ -18,7 +18,7 @@ keywords:
   - convert images to PDF on iPad
   - no third-party app
 description: As a photographer, you can easily create professional PDF documents from your photos directly on your iPhone or iPad. Learn how to use a built-in iOS feature to quickly create a portfolio, contact sheet, or a client proof without needing any third-party apps.
-cover: 
+cover: /images/convert-photos-to-pdf-on-iphone/cover.webp
 icon: 
 featured: false
 slug: 
