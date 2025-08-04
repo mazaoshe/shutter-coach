@@ -60,7 +60,7 @@ Open the **Photos** app and choose all the images you want to include in your do
 
 Once your photos are selected, tap the **Share** button located in the bottom-left corner of the screen.
 
-![share icon](images/convert-photos-to-pdf-on-iphone/1_2.webp)
+![share icon](/images/convert-photos-to-pdf-on-iphone/1_2.webp)
 
 ### 3. Choose "Print" from the Options
 
