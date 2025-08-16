@@ -239,10 +239,15 @@
             <h2 class="text-2xl font-bold text-gray-900 mb-6">Latest Photography Tips</h2>
             <div class="grid md:grid-cols-3 gap-6">
                 <!-- 文章卡片 -->
-                {{ range first 3 (where .Site.RegularPages "Section" "posts") }}
+                {{ range first 6 (where .Site.RegularPages "Section" "posts") }}
                 <div class="bg-white rounded-xl p-6 shadow-md border border-gray-200">
+                    {{ if .Params.cover }}
+                    <div class="aspect-w-16 aspect-h-9 mb-4">
+                        <img src="{{ .Params.cover }}" alt="{{ .Title }}" class="object-cover rounded-lg w-full h-full">
+                    </div>
+                    {{ end }}
                     <h3 class="font-semibold text-lg text-gray-800">{{ .Title }}</h3>
-                    <p class="text-sm text-gray-600 mt-2">{{ .Summary }}</p>
+                    <p class="text-sm text-gray-600 mt-2 line-clamp-1">{{ .Summary }}</p>
                     <a href="{{ .RelPermalink }}" class="text-blue-600 hover:underline mt-4 inline-block">Read more</a>
                 </div>
                 {{ end }}
