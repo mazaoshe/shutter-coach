@@ -240,16 +240,28 @@
             <div class="grid md:grid-cols-3 gap-6">
                 <!-- 文章卡片 -->
                 {{ range first 6 (where .Site.RegularPages "Section" "posts") }}
-                <div class="bg-white rounded-xl p-6 shadow-md border border-gray-200">
-                    {{ if .Params.cover }}
-                    <div class="aspect-w-16 aspect-h-9 mb-4">
-                        <img src="{{ .Params.cover }}" alt="{{ .Title }}" class="object-cover rounded-lg w-full h-full">
+                <a href="{{ .RelPermalink }}" class="block h-120">
+                    <div
+                        class="bg-white rounded-xl p-6 shadow-md border border-gray-200 hover:shadow-lg transition-shadow h-full flex flex-col">
+                        {{ if .Params.cover }}
+                        <div class="aspect-w-16 aspect-h-9 mb-4">
+                            <img src="{{ .Params.cover }}" alt="{{ .Title }}"
+                                class="object-cover rounded-lg w-full h-full">
+                        </div>
+                        {{ end }}
+                        <h3 class="font-semibold text-lg text-gray-800 line-clamp-2">{{ .Title }}</h3>
+                        <p class="text-xs text-gray-500 mt-2">{{ .Date.Format "Jan 2, 2006" }}</p>
+                        <p class="text-sm text-gray-600 mt-2 line-clamp-3 flex-grow">
+                            {{ $plainSummary := .Summary | plainify }}
+                            {{ if gt (len $plainSummary) 100 }}
+                            {{ slicestr $plainSummary 0 100 }}...
+                            {{ else }}
+                            {{ $plainSummary }}
+                            {{ end }}
+                        </p>
+                        <span class="text-blue-600 hover:underline mt-4 inline-block">Read more</span>
                     </div>
-                    {{ end }}
-                    <h3 class="font-semibold text-lg text-gray-800">{{ .Title }}</h3>
-                    <p class="text-sm text-gray-600 mt-2 line-clamp-1">{{ .Summary }}</p>
-                    <a href="{{ .RelPermalink }}" class="text-blue-600 hover:underline mt-4 inline-block">Read more</a>
-                </div>
+                </a>
                 {{ end }}
             </div>
         </section>
