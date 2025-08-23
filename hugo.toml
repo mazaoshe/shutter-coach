@@ -1,11 +1,78 @@
 baseURL = 'https://shuttercoach.com/'
 languageCode = 'en-us'
-title = 'ShutterCoach – Weather-Based Camera Settings for Photographers'
-theme = 'hugo-theme-shutter-coach'
-paginator = 2
+title = 'ShutterCoach - Go Code Snippets & Examples'
+theme = 'hugo-theme-go-snippets'
+enableRobotsTXT = true
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+enableEmoji = true
+canonifyURLs = true
+relativeURLs = false
+
+[permalinks]
+  posts = ":slug"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON", "WebAppManifest"]
+  section = ["HTML", "RSS"]
+  taxonomy = ["HTML", "RSS"]
+  term = ["HTML", "RSS"]
+
+[sitemap]
+  changefreq = 'weekly'
+  priority = 0.7
+  filename = 'sitemap.xml'
+
+[taxonomies]
+  category = 'categories'
+  tag = 'tags'
+  series = 'series'
+
+[minify]
+  disableXML = true
+  minifyOutput = true
+  disableCSS = false
+  disableHTML = false
+  disableJS = false
+  disableJSON = false
+  disableSVG = false
+
+[imaging]
+  resampleFilter = 'CatmullRom'
+  quality = 85
+  anchor = 'smart'
+  bgColor = '#ffffff'
+  hint = 'photo'
+
+[security]
+  [security.exec]
+    allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$']
+  [security.funcs]
+    getenv = ['^HUGO_', '^CI$']
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['$$', '$$'], ['\[', '\]']]
+          inline = [['\(', '\)']]
+
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    lineNos = false
+    style = 'dracula'
+    tabWidth = 2
 
 [params]
-  author = 'ShutterCoach'
-  description = 'Get AI-powered camera settings recommendations based on current weather, scene type, and light conditions. Perfect for beginner photographers.'
-  disqusShortname = 'shuttercoach'
-  keywords = 'camera settings, weather photography, aperture priority, ISO calculator, shutter speed tips, photography tools, beginner photography, sunlight portrait setup, SEO for photographers'
+  description = "Providing high-quality Go language code snippets to help developers solve problems quickly and improve development efficiency."
+  author = "Silas"
+
+  [params.contact]
+    email = "mazaoshe@hotmail.com"
+    github = "https://github.com/mazaoshe"

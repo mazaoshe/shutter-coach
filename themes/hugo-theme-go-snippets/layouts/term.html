@@ -1,0 +1,85 @@
+{{ define "main" }}
+<div class="container mx-auto px-4 py-8">
+  <!-- Breadcrumb 栏 -->
+  <div class="flex items-center gap-2 text-sm text-muted-foreground mb-8">
+    <a href="/" class="hover:text-primary transition-colors">Home</a>
+    {{ if .Parent }}
+    / <a href="{{ .Parent.RelPermalink }}" class="hover:text-primary transition-colors">{{ .Parent.Title }}</a>
+    {{ end }}
+    / <span class="text-foreground">{{ .Title }}</span>
+  </div>
+
+  <div class="flex items-center justify-between mb-8">
+    <div>
+      <h1 class="text-3xl font-bold mb-2">{{ .Title }}</h1>
+      {{ if .Description }}
+      <p class="text-muted-foreground">
+        {{ .Description }}
+      </p>
+      {{ else if .Content }}
+      <div class="prose max-w-none">
+        {{ .Content }}
+      </div>
+      {{ end }}
+    </div>
+  </div>
+
+  <!-- 文章列表 -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {{ range .Pages }}
+    <div class="card hover:shadow-elegant transition-all duration-300 hover:-translate-y-1 cursor-pointer" 
+         onclick="window.location.href='{{ .RelPermalink }}'">
+      <div class="card-header pb-3">
+        <div class="flex items-start justify-between mb-2">
+          {{ with .Params.categories }}
+          <span class="badge badge-secondary">
+            {{ index . 0 }}
+          </span>
+          {{ end }}
+          <div class="flex items-center text-xs text-muted-foreground">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="h-4 w-4 mr-1">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+            {{ if lt .ReadingTime 1 }}
+            < 1 min read
+            {{ else }}
+            {{ .ReadingTime }} min read
+            {{ end }}
+          </div>
+        </div>
+        <h3 class="text-lg font-semibold leading-none tracking-tight hover:text-primary transition-colors">
+          {{ .Title }}
+        </h3>
+        <p class="text-sm text-muted-foreground mt-2 leading-relaxed">
+          {{ if .Description }}
+          {{ .Description | truncate 100 }}
+          {{ else }}
+          {{ .Summary | plainify | truncate 100 }}
+          {{ end }}
+        </p>
+      </div>
+      <div class="card-content pt-0">
+        <div class="flex items-center justify-between">
+          <div class="flex flex-wrap gap-1">
+            {{ with .Params.tags }}
+              {{ range first 3 . }}
+              <span class="badge badge-outline text-xs">{{ . }}</span>
+              {{ end }}
+            {{ end }}
+          </div>
+          <a href="{{ .RelPermalink }}" class="inline-flex items-center btn btn-ghost text-sm">
+            View
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" 
+                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

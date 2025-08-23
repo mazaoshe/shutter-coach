@@ -1,0 +1,79 @@
+{{ define "main" }}
+<div class="container mx-auto px-4 py-8">
+    <!-- Breadcrumb 栏 -->
+    <div class="flex items-center gap-2 text-sm text-muted-foreground mb-8">
+        <a href="/" class="hover:text-cyan-500 transition-colors">Home</a>
+        / <span class="text-foreground">{{ .Title }}</span>
+    </div>
+
+    <div class="flex items-center justify-between mb-8">
+        <div>
+            <h1 class="text-3xl font-bold mb-2">{{ .Title }}</h1>
+            <p class="text-gray-600">
+                Explore Go code snippets in the {{ .Title }} category
+            </p>
+        </div>
+    </div>
+
+    <!-- 使用分页器，只获取 posts 文件夹下的内容 -->
+    {{ $pages := where site.RegularPages "Type" "posts" }}
+    {{ $paginator := .Paginate $pages }}
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {{ range $paginator.Pages }}
+        <div class="bg-white rounded-lg border p-6 hover-lift hover-scale transition-all duration-300 cursor-pointer"
+            onclick="window.location.href='{{ .RelPermalink }}'">
+            <div class="flex items-start justify-between mb-3">
+                {{ if .Params.categories }}
+                {{ range .Params.categories }}
+                <span class="badge badge-secondary">{{ . }}</span>
+                {{ end }}
+                {{ else }}
+                <span class="badge badge-secondary">Snippet</span>
+                {{ end }}
+                <div class="flex items-center text-xs text-gray-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="h-3 w-3 mr-1">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                    {{ if .Params.readingTime }}
+                    {{ .Params.readingTime }} min
+                    {{ else }}
+                    {{ div (countwords .Content) 220.0 | math.Ceil }} min
+                    {{ end }}
+                </div>
+            </div>
+            <h3 class="text-lg font-semibold mb-2 hover:text-cyan-500 transition-colors">
+                {{ .Title }}
+            </h3>
+            <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                {{ if .Params.description }}
+                {{ .Params.description }}
+                {{ else }}
+                {{ .Summary | plainify | truncate 100 }}
+                {{ end }}
+            </p>
+            <div class="flex items-center justify-between">
+                <div class="flex flex-wrap gap-1">
+                    {{ if .Params.tags }}
+                    {{ range first 3 .Params.tags }}
+                    <span class="badge badge-outline text-xs">{{ . }}</span>
+                    {{ end }}
+                    {{ else }}
+                    <span class="badge badge-outline text-xs">No tags</span>
+                    {{ end }}
+                </div>
+                <a href="{{ .RelPermalink }}" class="btn btn-ghost text-sm px-3 py-1">
+                    View
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="h-4 w-4 ml-1">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</div>
+{{ end }}

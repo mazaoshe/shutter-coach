@@ -1,0 +1,46 @@
+{{ $item := .item }}
+<div class="card group hover:shadow-elegant transition-all duration-300 hover:-translate-y-1">
+    <div class="card-header pb-3">
+        <div class="flex items-start justify-between">
+            {{ with $item.Params.tags }}
+            <span class="badge badge-secondary mb-2">
+                {{ index . 0 }}
+            </span>
+            {{ end }}
+            <div class="flex items-center text-xs text-muted-foreground">
+                <div class="text-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="h-4 w-4 mr-1">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                </div>
+                2 min
+            </div>
+        </div>
+        <h3 class="text-lg font-semibold leading-none tracking-tight group-hover:text-primary transition-colors">
+            {{ $item.Title }}
+        </h3>
+        <p class="text-sm text-muted-foreground leading-relaxed">
+            {{ $item.Summary | truncate 100 }}
+        </p>
+    </div>
+    <div class="card-content pt-0">
+        <div class="flex items-center justify-between">
+            <div class="flex flex-wrap gap-1">
+                {{ range first 3 $item.Params.tags }}
+                <span class="badge badge-outline text-xs">{{ . }}</span>
+                {{ end }}
+            </div>
+            <a href="{{ $item.RelPermalink }}" class="inline-flex items-center btn btn-ghost">
+                View
+                <!-- 使用 SVG 图标代替 ArrowRight 组件 -->
+                <svg xmlns="http://www.w3.org/2000/svg"
+                    class="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+            </a>
+        </div>
+    </div>
+</div>

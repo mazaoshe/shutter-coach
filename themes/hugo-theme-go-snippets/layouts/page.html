@@ -1,0 +1,97 @@
+{{ define "main" }}
+
+<div class="container mx-auto px-4 py-8">
+    <!-- Breadcrumb 栏 -->
+    {{ partial "component/article-breadcrumb.html" . }}
+
+    <!-- 返回按钮 -->
+    <a href="/" class="inline-flex items-center btn btn-ghost btn-ghost hover:text-primary mb-6">
+        <!-- 使用 SVG 图标代替 React 的 ArrowLeft -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Back to Snippets
+    </a>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- 主内容区 -->
+        <div class="lg:col-span-2">
+            <div class="mb-8">
+                <div class="flex items-center gap-4 mb-4">
+                    {{ range .Params.categories }}
+                    <span class="badge badge-secondary hover:badge-secondary-50">
+                        {{ . }}
+                    </span>
+                    {{ end }}
+
+                    <div class="flex items-center text-sm text-muted-foreground">
+                        <div class="text-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                            </svg>
+
+                        </div>
+                        {{ if lt .ReadingTime 1 }}
+                        < 1 min read {{ else }} {{ .ReadingTime }} min read {{ end }} </div>
+                    </div>
+                    <h1 class="text-4xl font-bold mb-4">{{ .Title }}</h1>
+                    {{ if .Description }}
+                    <p class="text-xl text-muted-foreground leading-relaxed">
+                        {{ .Description }}
+                    </p>
+                    {{ end }}
+                </div>
+
+                <!-- Tags 区 -->
+                {{ if .Params.tags }}
+                {{ partial "component/article-tags.html" . }}
+                {{ end }}
+
+                <!-- 正文内容 -->
+                <article class="prose lg:prose-lg max-w-none w-full p-2 lg:p-4 article-content">
+                    {{ .Content }}
+                </article>
+            </div>
+
+            <!-- 侧边栏 -->
+            <div class="space-y-6">
+                {{ partial "component/sidebar-quick-info.html" . }}
+                {{ partial "component/sidebar-navigation.html" . }}
+            </div>
+        </div>
+
+
+        <!-- Related Snippets 区 -->
+        {{ $currentCategories := .Params.categories }}
+        {{ $relatedPosts := slice }}
+
+        {{ range site.RegularPages }}
+        {{ if and (ne .Permalink $.Permalink) .Params.categories }}
+        {{ $hasCommonCategory := false }}
+        {{ range .Params.categories }}
+        {{ if in $currentCategories . }}
+        {{ $hasCommonCategory = true }}
+        {{ end }}
+        {{ end }}
+        {{ if $hasCommonCategory }}
+        {{ $relatedPosts = $relatedPosts | append . }}
+        {{ end }}
+        {{ end }}
+        {{ end }}
+
+        {{ if $relatedPosts }}
+        <section class="mt-16">
+            <h2 class="text-2xl font-semibold mb-6">Related Snippets</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {{ range first 3 $relatedPosts }}
+                {{ partial "component/article-related-snippets.html" (dict "item" .) }}
+                {{ end }}
+            </div>
+        </section>
+        {{ end }}
+    </div>
+</div>
+{{ end }}

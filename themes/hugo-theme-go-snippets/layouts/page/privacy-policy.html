@@ -1,0 +1,71 @@
+{{ define "main" }}
+<div class="container mx-auto px-4 py-12">
+  <div class="max-w-4xl mx-auto">
+    <header class="mb-8">
+      <h1 class="text-4xl font-extrabold mb-2">Privacy Policy</h1>
+      <p class="text-sm text-gray-500">Last updated: {{ with .Lastmod }}{{ .Format "January 2, 2006" }}{{ else }}{{ now.Format "January 2, 2006" }}{{ end }}</p>
+      <div class="mt-4 rounded-lg bg-yellow-50 p-4 border-l-4 border-yellow-400">
+        <p class="text-yellow-700 text-base">Please read this Privacy Policy carefully to understand how we handle your personal information.</p>
+      </div>
+    </header>
+    <article class="prose max-w-none prose-slate">
+      <h2>Overview</h2>
+      <p> {{ .Site.Title }} (the “Site”) values your privacy. This policy explains how we collect, use, and protect your information when you visit our site.</p>
+
+      <h2>Information We Collect</h2>
+      <ul>
+        <li><strong>Basic logs</strong>: IP address, browser type, referring page, time and date of access, and navigation paths.</li>
+        <li><strong>Cookies / local storage</strong>: For session management, preferences, and analytics.</li>
+        <li><strong>Analytics data</strong>: We may use third-party services (e.g., Google Analytics) to gather anonymized usage data.</li>
+        <li><strong>User submissions</strong>: Any information you voluntarily provide, such as comments or form entries.</li>
+      </ul>
+
+      <h2>How We Use Information</h2>
+      <ul>
+        <li>To maintain website security and prevent abuse</li>
+        <li>To improve our content and user experience</li>
+        <li>To generate aggregated statistics and performance reports</li>
+        <li>To communicate with you, if you provide consent</li>
+      </ul>
+
+      <h2>Cookies</h2>
+      <p>You may disable cookies in your browser settings, but some features may not function properly. Third-party services (e.g., embedded videos, fonts, analytics) may also set cookies subject to their own policies.</p>
+
+      <h2>Third-Party Services</h2>
+      <p>We may integrate services such as analytics, CDN, code highlighting libraries, or ad networks. These providers may collect and use information under their own privacy policies.</p>
+
+      <h2>Data Retention</h2>
+      <p>Logs are kept for a limited time for security and audit purposes. Submitted data is retained only as long as necessary, unless longer retention is required by law.</p>
+
+      <h2>Data Security</h2>
+      <p>We apply reasonable technical and organizational measures to protect your information, but no system is 100% secure.</p>
+
+      <h2>Your Rights</h2>
+      <p>Depending on your jurisdiction, you may request access, correction, or deletion of your personal information. Contact us at <strong><a href="mailto:{{ .Site.Params.contact.email }}" class="text-blue-600 hover:underline">{{ .Site.Params.contact.email }}</a></strong> to make a request.</p>
+
+      <h2>International Transfers</h2>
+      <p>Your data may be transferred and processed outside of your country. By using this site, you consent to such transfers.</p>
+
+      <h2>Children's Privacy</h2>
+      <p>This site is not directed at children under 13. If you believe we have unintentionally collected such data, please contact us for deletion.</p>
+
+      <h2>Updates</h2>
+      <p>We may update this Privacy Policy occasionally. The latest revision date is shown at the top.</p>
+
+      <h2>Contact</h2>
+      <p>If you have any questions, please contact us at <strong><a href="mailto:{{ .Site.Params.contact.email }}" class="text-blue-600 hover:underline">{{ .Site.Params.contact.email }}</a></strong>.</p>
+    </article>
+  </div>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Privacy Policy",
+  "url": "{{ .Permalink }}",
+  "datePublished": "{{ .Date.Format "2006-01-02" }}",
+  "dateModified": "{{ with .Lastmod }}{{ .Format "2006-01-02" }}{{ else }}{{ now.Format "2006-01-02" }}{{ end }}"
+}
+</script>
+{{ end }}

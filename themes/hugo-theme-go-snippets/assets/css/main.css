@@ -1,0 +1,264 @@
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+
+/* 让 dark: 变体基于 .dark 类生效（v4 推荐做法） */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* === Tailwind v4 主题变量（会生成对应工具类）=== */
+/* 映射自 src/index.css，但改为 v4 要求的 --color-* 命名 */
+@theme {
+    /* Base */
+    --color-background: 0 0% 100%;
+    --color-foreground: 220 13% 18%;
+
+    /* Card / Popover */
+    --color-card: 0 0% 100%;
+    --color-card-foreground: 220 13% 18%;
+    --color-popover: 0 0% 100%;
+    --color-popover-foreground: 220 13% 18%;
+
+    /* Brand */
+    --color-primary: 188 100% 42%;
+    --color-primary-foreground: 0 0% 100%;
+    --color-primary-glow: 188 100% 65%;
+    --color-secondary: 220 60% 35%;
+    --color-secondary-foreground: 0 0% 100%;
+
+    /* Neutral / Accents */
+    --color-muted: 220 13% 96%;
+    --color-muted-foreground: 220 13% 45%;
+    --color-accent: 220 13% 95%;
+    --color-accent-foreground: 220 13% 18%;
+
+    /* Status */
+    --color-destructive: 0 84% 60%;
+    --color-destructive-foreground: 0 0% 100%;
+    --color-success: 142 76% 36%;
+    --color-success-foreground: 0 0% 100%;
+
+    /* Interactive */
+    --color-border: 220 13% 91%;
+    --color-input: 220 13% 91%;
+    --color-ring: 188 100% 42%;
+    /* Sidebar */
+    --color-sidebar-background: 0 0% 98%;
+    --color-sidebar-foreground: 240 5.3% 26.1%;
+    --color-sidebar-primary: 240 5.9% 10%;
+    --color-sidebar-primary-foreground: 0 0% 98%;
+    --color-sidebar-accent: 240 4.8% 95.9%;
+    --color-sidebar-accent-foreground: 240 5.9% 10%;
+    --color-sidebar-border: 220 13% 91%;
+    --color-sidebar-ring: 217.2 91.2% 59.8%;
+}
+
+/* === 基础样式 & 非主题变量（不会生成工具类）=== */
+@layer base {
+    :root {
+        /* 非工具类型设计令牌 */
+        --radius: 0.75rem;
+
+        /* Gradients */
+        --gradient-primary: linear-gradient(135deg,
+                hsl(var(--color-primary)),
+                hsl(var(--color-primary-glow)));
+        --gradient-hero: linear-gradient(135deg,
+                hsl(var(--color-primary)) 0%,
+                hsl(var(--color-secondary)) 100%);
+        --gradient-card: linear-gradient(145deg,
+                hsl(0 0% 100%) 0%,
+                hsl(220 13% 98%) 100%);
+
+        /* Shadows */
+        --shadow-elegant: 0 4px 20px -4px hsl(var(--color-primary) / 0.15);
+        --shadow-card: 0 1px 3px 0 hsl(220 13% 0% / 0.1),
+            0 1px 2px 0 hsl(220 13% 0% / 0.06);
+        --shadow-glow: 0 0 30px hsl(var(--color-primary) / 0.3);
+    }
+
+    /* 暗色：覆盖同名 CSS 变量 */
+    .dark {
+        --color-background: 222.2 84% 4.9%;
+        --color-foreground: 210 40% 98%;
+
+        --color-card: 222.2 84% 4.9%;
+        --color-card-foreground: 210 40% 98%;
+
+        --color-popover: 222.2 84% 4.9%;
+        --color-popover-foreground: 210 40% 98%;
+
+        --color-primary: 210 40% 98%;
+        --color-primary-foreground: 222.2 47.4% 11.2%;
+
+        --color-secondary: 217.2 32.6% 17.5%;
+        --color-secondary-foreground: 210 40% 98%;
+
+        --color-muted: 217.2 32.6% 17.5%;
+        --color-muted-foreground: 215 20.2% 65.1%;
+
+        --color-accent: 217.2 32.6% 17.5%;
+        --color-accent-foreground: 210 40% 98%;
+
+        --color-destructive: 0 62.8% 30.6%;
+        --color-destructive-foreground: 210 40% 98%;
+
+        --color-border: 217.2 32.6% 17.5%;
+        --color-input: 217.2 32.6% 17.5%;
+        --color-ring: 212.7 26.8% 83.9%;
+
+        --color-sidebar-background: 240 5.9% 10%;
+        --color-sidebar-foreground: 240 4.8% 95.9%;
+        --color-sidebar-primary: 224.3 76.3% 48%;
+        --color-sidebar-primary-foreground: 0 0% 100%;
+        --color-sidebar-accent: 240 3.7% 15.9%;
+        --color-sidebar-accent-foreground: 240 4.8% 95.9%;
+        --color-sidebar-border: 240 3.7% 15.9%;
+        --color-sidebar-ring: 217.2 91.2% 59.8%;
+    }
+
+    * {
+        border-color: hsl(var(--color-border));
+    }
+
+    body {
+        @apply bg-background text-foreground font-sans;
+        font-feature-settings: 'rlig' 1, 'calt' 1;
+    }
+
+    /* Typography */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-semibold;
+    }
+
+    h2 {
+        @apply text-2xl font-semibold mb-4
+    }
+
+
+    /* Helpers */
+    .text-gradient {
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .shadow-elegant {
+        box-shadow: var(--shadow-elegant);
+    }
+
+    .shadow-glow {
+        box-shadow: var(--shadow-glow);
+    }
+}
+
+/* 组件类（保留你原来 main.css 的按钮/徽章等，但改用 v4 变量） */
+@layer components {
+    .btn {
+        @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-all px-4 py-2 no-underline cursor-pointer;
+        border: none;
+    }
+
+    .btn-primary {
+        background-color: hsl(var(--color-primary));
+        color: hsl(var(--color-primary-foreground));
+    }
+
+    .btn-primary:hover {
+        filter: brightness(0.95);
+    }
+
+    .btn-outline {
+        background-color: transparent;
+        border: 1px solid hsl(var(--color-border));
+        color: hsl(var(--color-foreground));
+    }
+
+    .btn-outline:hover {
+        background-color: hsl(var(--color-accent));
+    }
+
+    .btn-ghost {
+        background-color: transparent;
+        color: hsl(var(--color-foreground));
+    }
+
+    .btn-ghost:hover {
+        background-color: hsl(var(--color-accent));
+    }
+
+    .badge {
+        @apply inline-flex items-center rounded-md text-xs font-medium px-2 py-1;
+    }
+
+    .badge-secondary {
+        background-color: hsl(var(--color-secondary));
+        color: hsl(var(--color-secondary-foreground));
+    }
+
+    .hover\:badge-secondary-50:hover {
+        filter: brightness(1.5);
+    }
+
+    .badge-outline {
+        background-color: transparent;
+        border: 1px solid hsl(var(--color-border));
+        color: hsl(var(--color-foreground));
+    }
+
+    .input {
+        @apply w-full rounded-md px-3 py-2 text-sm transition-all;
+        border: 1px solid hsl(var(--color-border));
+        background-color: hsl(var(--color-card));
+    }
+
+    .input:focus {
+        outline: none;
+        border-color: hsl(var(--color-primary));
+        box-shadow: 0 0 0 2px hsl(var(--color-primary) / 0.2);
+    }
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-fade-in {
+        animation: fade-in 0.6s ease-out;
+    }
+
+    .animate-fade-in {
+        animation: fade-in 0.6s ease-out;
+    }
+
+    .card {
+        border-radius: var(--radius-lg);
+        border: 1px solid hsl(var(--color-border));
+        background-color: hsl(var(--color-card));
+        color: hsl(var(--color-card-foreground));
+        box-shadow: var(--shadow-card);
+    }
+
+    .card-header {
+        display: flex;
+        flex-direction: column;
+        space-y: 1.5;
+        padding: calc(var(--spacing) * 6);
+    }
+
+    .card-content {
+        padding: calc(var(--spacing) * 6);
+        padding-top: calc(var(--spacing) * 0);
+    }
+}

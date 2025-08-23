@@ -1,0 +1,41 @@
+<div class="card">
+    <div class="card-header text-lg">
+        <h3 class="text-lg">Quick Info</h3>
+    </div>
+    <div class="card-content space-y-4">
+        <div>
+            <div class="text-sm font-medium text-muted-foreground mb-1">Category</div>
+            {{ if .Params.categories }}
+            {{ range .Params.categories }}
+            <span class="badge badge-secondary">
+                {{ . }}
+            </span>
+            {{ end }}
+            {{ else }}
+            <span class="badge badge-secondary">Uncategorized</span>
+            {{ end }}
+        </div>
+        <div>
+            <div class="text-sm font-medium text-muted-foreground mb-1">Tags</div>
+            <div class="flex flex-wrap gap-1">
+                {{ if .Params.tags }}
+                {{ range .Params.tags }}
+                <span class="badge badge-outline text-xs">{{ . }}</span>
+                {{ end }}
+                {{ else }}
+                <span class="badge badge-outline text-xs">No tags</span>
+                {{ end }}
+            </div>
+        </div>
+        <div>
+            <div class="text-sm font-medium text-muted-foreground mb-1">Reading Time</div>
+            <div class="text-sm">
+                {{ if .Params.readingTime }}
+                {{ .Params.readingTime }} minutes
+                {{ else }}
+                {{ div (countwords .Content) 220.0 | math.Ceil }} minutes
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</div>

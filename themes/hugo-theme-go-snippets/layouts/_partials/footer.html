@@ -1,0 +1,86 @@
+<footer class="bg-background border-t">
+    <div class="container mx-auto px-4 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- About Us -->
+            <div class="space-y-4">
+                <div class="flex items-center space-x-2">
+                    <div
+                        class="h-8 w-8 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
+                        <span class="text-sm font-bold text-white">Go</span>
+                    </div>
+                    <span class="text-xl font-bold text-gradient">Go Snippets</span>
+                </div>
+                <p class="text-muted-foreground text-sm">
+                    Providing high-quality Go language code snippets to help developers solve problems quickly and
+                    improve development efficiency.
+                </p>
+                <div class="flex space-x-4">
+                    <!-- Social media links can be added here -->
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="space-y-4">
+                <h3 class="text-lg font-semibold">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="/" class="text-muted-foreground hover:text-primary transition-colors text-sm">Home</a>
+                    </li>
+                    <li><a href="/categories/"
+                            class="text-muted-foreground hover:text-primary transition-colors text-sm">Categories</a>
+                    </li>
+                    <li><a href="/tags/"
+                            class="text-muted-foreground hover:text-primary transition-colors text-sm">Tags</a></li>
+                    <li><a href="/posts/" class="text-muted-foreground hover:text-primary transition-colors text-sm">All
+                            Posts</a></li>
+                </ul>
+            </div>
+
+            <!-- Categories -->
+            <div class="space-y-4">
+                <h3 class="text-lg font-semibold">Popular Categories</h3>
+                <ul class="space-y-2">
+                    {{ range first 4 (where site.Pages "Type" "categories") }}
+                    <li>
+                        <a href="{{ .Permalink }}"
+                            class="text-muted-foreground hover:text-primary transition-colors text-sm">
+                            {{ .Title }}
+                        </a>
+                    </li>
+                    {{ end }}
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="space-y-4">
+                <h3 class="text-lg font-semibold">Contact Us</h3>
+                <ul class="space-y-2">
+                    <li class="text-muted-foreground text-sm">
+                        <i class="mr-2" data-lucide="mail"></i>
+                        <a href="mailto:{{ .Site.Params.contact.email }}" target="_blank">
+                            {{ .Site.Params.contact.email }}
+                        </a>
+                    </li>
+                    <li class="text-muted-foreground text-sm">
+                        <i class="mr-2" data-lucide="github"></i>
+                        <a href="{{ .Site.Params.contact.github }}" target="_blank" rel="noopener noreferrer">GitHub
+                            Repository</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p class="text-muted-foreground text-sm">
+                © {{ now.Year }} {{ .Site.Title }}. All rights reserved.
+            </p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a href="/privacy-policy/"
+                    class="text-muted-foreground hover:text-primary transition-colors text-sm">Privacy Policy</a>
+                <a href="/terms/" class="text-muted-foreground hover:text-primary transition-colors text-sm">Terms of
+                    Use</a>
+                <a href="/sitemap.xml"
+                    class="text-muted-foreground hover:text-primary transition-colors text-sm">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer>

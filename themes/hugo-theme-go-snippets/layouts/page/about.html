@@ -1,0 +1,179 @@
+{{ define "main" }}
+<!-- layouts/page/about.html -->
+<div class="min-h-screen bg-background">
+    <div class="container mx-auto px-4 py-16">
+        <!-- Hero Section -->
+        <div class="text-center max-w-4xl mx-auto mb-16">
+            <h1 class="text-5xl font-bold mb-6">
+                {{ .Title }} <span class="text-gradient">Go Snippets</span>
+            </h1>
+            <p class="text-xl text-muted-foreground leading-relaxed">
+                A curated collection of practical Go code examples for developers of all levels.
+                Learn, copy, and implement real-world solutions in your projects.
+            </p>
+        </div>
+
+        <!-- Mission Statement -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            <div>
+                <h2 class="text-3xl font-bold mb-6">Our Mission</h2>
+                <p class="text-muted-foreground leading-relaxed mb-4">
+                    Go Snippets exists to make Go development faster and more accessible.
+                    We believe that having quick access to well-documented, practical code examples
+                    can significantly accelerate the learning process and boost productivity.
+                </p>
+                <p class="text-muted-foreground leading-relaxed">
+                    Every snippet is carefully crafted with real-world use cases in mind,
+                    complete with explanations and best practices to help you understand
+                    not just the "how" but also the "why" behind each solution.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="card text-center p-6">
+                    <div class="card-header pb-3">
+                        <span class="inline-block text-primary text-3xl mb-2">💻</span>
+                        <div class="text-lg font-semibold">Practical</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="text-muted-foreground">Real solutions for everyday development challenges</div>
+                    </div>
+                </div>
+                <div class="card text-center p-6">
+                    <div class="card-header pb-3">
+                        <span class="inline-block text-primary text-3xl mb-2">❤️</span>
+                        <div class="text-lg font-semibold">Free</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="text-muted-foreground">100% free and open source for the Go community</div>
+                    </div>
+                </div>
+                <div class="card text-center p-6">
+                    <div class="card-header pb-3">
+                        <span class="inline-block text-primary text-3xl mb-2">📖</span>
+                        <div class="text-lg font-semibold">Educational</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="text-muted-foreground">Step-by-step explanations with best practices</div>
+                    </div>
+                </div>
+                <div class="card text-center p-6">
+                    <div class="card-header pb-3">
+                        <span class="inline-block text-primary text-3xl mb-2">🌍</span>
+                        <div class="text-lg font-semibold">Community</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="text-muted-foreground">Built by developers, for developers worldwide</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- What You'll Find -->
+        <div class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8">What You'll Find</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold">Code Categories</h3>
+                    <ul class="space-y-2 text-muted-foreground">
+                        <li>• Time and date manipulation</li>
+                        <li>• String processing and formatting</li>
+                        <li>• File and directory operations</li>
+                        <li>• JSON parsing and generation</li>
+                        <li>• HTTP requests and API integration</li>
+                        <li>• Concurrency patterns with goroutines</li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold">Features</h3>
+                    <ul class="space-y-2 text-muted-foreground">
+                        <li>• Syntax-highlighted code blocks</li>
+                        <li>• One-click copy functionality</li>
+                        <li>• Detailed explanations</li>
+                        <li>• Mobile-responsive design</li>
+                        <li>• Fast search and filtering</li>
+                        <li>• SEO-optimized for easy discovery</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Helpful Resources -->
+        <div class="bg-muted/50 rounded-2xl p-8 mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8">Helpful Resources</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <div class="card p-6">
+                    <div class="card-header flex items-center mb-2">
+                        <span class="text-primary text-xl mr-2">📖</span>
+                        <div class="font-semibold">Official Go Docs</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="text-muted-foreground mb-4">
+                            The official Go documentation and language specification.
+                        </div>
+                        <a href="https://golang.org/doc/" target="_blank" rel="noopener noreferrer"
+                            class="btn btn-outline text-sm">
+                            Visit Docs
+                        </a>
+                    </div>
+                </div>
+                <div class="card p-6">
+                    <div class="card-header flex items-center mb-2">
+                        <span class="text-primary text-xl mr-2">💻</span>
+                        <div class="font-semibold">Go Playground</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="text-muted-foreground mb-4">
+                            Test and run Go code directly in your browser.
+                        </div>
+                        <a href="https://play.golang.org/" target="_blank" rel="noopener noreferrer"
+                            class="btn btn-outline text-sm">
+                            Open Playground
+                        </a>
+                    </div>
+                </div>
+                <div class="card p-6">
+                    <div class="card-header flex items-center mb-2">
+                        <span class="text-primary text-xl mr-2">🐙</span>
+                        <div class="font-semibold">Go Community</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="text-muted-foreground mb-4">
+                            Join the Go community on GitHub and contribute to projects.
+                        </div>
+                        <a href="https://github.com/golang/go" target="_blank" rel="noopener noreferrer"
+                            class="btn btn-outline text-sm">
+                            View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="text-center">
+            <h2 class="text-3xl font-bold mb-4">Start Exploring</h2>
+            <p class="text-muted-foreground mb-8 max-w-2xl mx-auto">
+                Ready to find the Go code you need? Browse our collection of practical snippets
+                and speed up your development workflow.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="/" class="btn btn-primary btn-lg shadow-elegant">
+                    <span class="mr-2">💻</span> Browse Snippets
+                </a>
+                <a href="/categories" class="btn btn-outline btn-lg">
+                    View Categories
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "Go Snippets",
+  "url": "https://gosnippets.example.com/about",
+  "description": "Go Snippets is a collection of useful and reusable Go language code snippets designed to help developers quickly find and implement common programming tasks."
+}
+</script>
+{{ end }}
