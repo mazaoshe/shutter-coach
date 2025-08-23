@@ -72,6 +72,7 @@ relativeURLs = false
 [params]
   description = "Providing high-quality Go language code snippets to help developers solve problems quickly and improve development efficiency."
   author = "Silas"
+  defaultImage = "https://image.ypplog.cn/go-snippets-og-image.avif"
 
   [params.contact]
     email = "mazaoshe@hotmail.com"
