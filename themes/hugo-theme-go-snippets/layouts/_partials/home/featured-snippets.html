@@ -18,8 +18,10 @@
         {{ range first 6 (where .Site.RegularPages "Type" "posts") }}
         <div class="bg-white rounded-lg border p-6 hover-lift hover-scale transition-all duration-300">
             <div class="flex items-start justify-between mb-3">
-                {{ if .Params.category }}
-                <span class="badge badge-secondary">{{ .Params.category }}</span>
+                {{ if .Params.categories }}
+                {{ range .Params.categories }}
+                <span class="badge badge-secondary">{{ . }}</span>
+                {{ end }}
                 {{ else }}
                 <span class="badge badge-secondary">Snippet</span>
                 {{ end }}

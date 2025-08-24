@@ -10,76 +10,52 @@
   </p>
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-    <!-- Time & Date Category -->
-    <div
-      class="bg-white rounded-lg border p-6 text-center hover-lift hover-scale transition-all duration-300 cursor-pointer">
-      <div class="text-4xl mb-4">⏰</div>
-      <h3 class="font-semibold text-lg mb-2 hover:text-cyan-500 transition-colors">Time & Date</h3>
-      <p class="text-gray-600 text-sm mb-4">Working with time, dates, and duration</p>
-      <div class="text-xs text-gray-500">8 snippets available</div>
+    <!-- 创建一个包含分类信息的排序列表 -->
+    {{ $sortedCategories := slice }}
+    {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+      {{ $config := $.Site.Params.categoryConfig }}
+      {{ $categoryConfig := $.Site.Params.defaultCategoryConfig }}
+      {{ if isset $config $name }}
+        {{ $categoryConfig = index $config $name }}
+      {{ end }}
+      
+      <!-- 计算只属于 posts 的数量 -->
+      {{ $postCount := 0 }}
+      {{ range $taxonomy }}
+        {{ if eq .Page.Section "posts" }}
+          {{ $postCount = add $postCount 1 }}
+        {{ end }}
+      {{ end }}
+      
+      <!-- 获取分类页面链接 -->
+      {{ $categoryPage := $.Site.GetPage (printf "/categories/%s" ($name | urlize)) }}
+      {{ $categoryURL := "" }}
+      {{ if $categoryPage }}
+        {{ $categoryURL = $categoryPage.RelPermalink }}
+      {{ else }}
+        {{ $categoryURL = printf "/categories/%s/" ($name | urlize) }}
+      {{ end }}
+      
+      {{ $categoryData := dict "name" $name "config" $categoryConfig "count" $postCount "url" $categoryURL }}
+      {{ $sortedCategories = $sortedCategories | append $categoryData }}
+    {{ end }}
+    
+    <!-- 按照order字段排序 -->
+    {{ $sortedCategories = sort $sortedCategories "config.order" }}
+    
+    {{ range $categoryData := $sortedCategories }}
+    <div 
+      class="bg-white rounded-lg border p-6 text-center hover-lift hover-scale transition-all duration-300 cursor-pointer"
+      onclick="window.location.href='{{ $categoryData.url }}'">
+      <div class="text-4xl mb-4">
+        {{ $categoryData.config.icon }}
+      </div>
+      <h3 class="font-semibold text-lg mb-2 hover:text-cyan-500 transition-colors">{{ $categoryData.config.displayName }}</h3>
+      <p class="text-gray-600 text-sm mb-4">
+        {{ $categoryData.config.description }}
+      </p>
+      <div class="text-xs text-gray-500">{{ $categoryData.count }} snippets available</div>
     </div>
-
-    <!-- Strings Category -->
-    <div
-      class="bg-white rounded-lg border p-6 text-center hover-lift hover-scale transition-all duration-300 cursor-pointer">
-      <div class="text-4xl mb-4">📝</div>
-      <h3 class="font-semibold text-lg mb-2 hover:text-cyan-500 transition-colors">Strings</h3>
-      <p class="text-gray-600 text-sm mb-4">String manipulation and formatting</p>
-      <div class="text-xs text-gray-500">6 snippets available</div>
-    </div>
-
-    <!-- JSON Category -->
-    <div
-      class="bg-white rounded-lg border p-6 text-center hover-lift hover-scale transition-all duration-300 cursor-pointer">
-      <div class="text-4xl mb-4">📋</div>
-      <h3 class="font-semibold text-lg mb-2 hover:text-cyan-500 transition-colors">JSON</h3>
-      <p class="text-gray-600 text-sm mb-4">JSON parsing and serialization</p>
-      <div class="text-xs text-gray-500">5 snippets available</div>
-    </div>
-
-    <!-- Files & IO Category -->
-    <div
-      class="bg-white rounded-lg border p-6 text-center hover-lift hover-scale transition-all duration-300 cursor-pointer">
-      <div class="text-4xl mb-4">📁</div>
-      <h3 class="font-semibold text-lg mb-2 hover:text-cyan-500 transition-colors">Files & IO</h3>
-      <p class="text-gray-600 text-sm mb-4">File operations and input/output</p>
-      <div class="text-xs text-gray-500">7 snippets available</div>
-    </div>
-
-    <!-- HTTP Category -->
-    <div
-      class="bg-white rounded-lg border p-6 text-center hover-lift hover-scale transition-all duration-300 cursor-pointer">
-      <div class="text-4xl mb-4">🌐</div>
-      <h3 class="font-semibold text-lg mb-2 hover:text-cyan-500 transition-colors">HTTP</h3>
-      <p class="text-gray-600 text-sm mb-4">HTTP clients and servers</p>
-      <div class="text-xs text-gray-500">9 snippets available</div>
-    </div>
-
-    <!-- Concurrency Category -->
-    <div
-      class="bg-white rounded-lg border p-6 text-center hover-lift hover-scale transition-all duration-300 cursor-pointer">
-      <div class="text-4xl mb-4">⚡</div>
-      <h3 class="font-semibold text-lg mb-2 hover:text-cyan-500 transition-colors">Concurrency</h3>
-      <p class="text-gray-600 text-sm mb-4">Goroutines and channels</p>
-      <div class="text-xs text-gray-500">6 snippets available</div>
-    </div>
-
-    <!-- Cryptography Category -->
-    <div
-      class="bg-white rounded-lg border p-6 text-center hover-lift hover-scale transition-all duration-300 cursor-pointer">
-      <div class="text-4xl mb-4">🔐</div>
-      <h3 class="font-semibold text-lg mb-2 hover:text-cyan-500 transition-colors">Cryptography</h3>
-      <p class="text-gray-600 text-sm mb-4">Encryption and hashing</p>
-      <div class="text-xs text-gray-500">4 snippets available</div>
-    </div>
-
-    <!-- Testing Category -->
-    <div
-      class="bg-white rounded-lg border p-6 text-center hover-lift hover-scale transition-all duration-300 cursor-pointer">
-      <div class="text-4xl mb-4">🧪</div>
-      <h3 class="font-semibold text-lg mb-2 hover:text-cyan-500 transition-colors">Testing</h3>
-      <p class="text-gray-600 text-sm mb-4">Unit testing and benchmarks</p>
-      <div class="text-xs text-gray-500">5 snippets available</div>
-    </div>
+    {{ end }}
   </div>
 </section>

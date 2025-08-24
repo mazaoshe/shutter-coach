@@ -3,8 +3,13 @@ title: "JSON Processing in Go"
 description: "Learn how to encode and decode JSON data in Go using the encoding/json package with structs and maps."
 date: 2025-08-16T15:30:00+08:00
 draft: false
-categories: ["Go"]
-tags: ["json", "encoding", "decoding", "data", "Code Example"]
+categories: ["Json"]
+tags: 
+  - "json"
+  - "encoding"
+  - "decoding"
+  - "data"
+  - "Code Example"
 slug: "go-json-processing"
 keywords: "Go JSON processing, JSON encoding decoding, Go encoding/json package, JSON marshal unmarshal example"
 ---

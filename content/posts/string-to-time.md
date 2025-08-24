@@ -3,8 +3,13 @@ title: "Convert String to Time"
 description: "Learn how to convert a string into a time.Time object using Go's time package with proper error handling."
 date: 2025-08-16T14:30:00+08:00
 draft: false
-categories: ["Go"]
-tags: ["time", "parsing", "string", "conversion", "Code Example"]
+categories: ["DateTime"]
+tags: 
+  - "time"
+  - "parsing"
+  - "string"
+  - "conversion"
+  - "Code Example"
 slug: "go-string-to-time"
 keywords: "Go time parsing, string to time conversion, Go time package, time parsing example"
 ---

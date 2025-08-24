@@ -77,3 +77,20 @@ relativeURLs = false
   [params.contact]
     email = "mazaoshe@hotmail.com"
     github = "https://github.com/mazaoshe"
+    
+  [params.categoryConfig]
+    "DateTime" = { icon = "⏰", description = "Working with time, dates, and duration", displayName = "DateTime", order = 1 }
+    "Strings" = { icon = "📝", description = "String manipulation and formatting", displayName = "Strings", order = 2 }
+    "JSON" = { icon = "📋", description = "JSON parsing and serialization", displayName = "JSON", order = 3 }
+    "Files" = { icon = "📁", description = "File operations and input/output", displayName = "Files", order = 4 }
+    "HTTP" = { icon = "🌐", description = "HTTP clients and servers", displayName = "HTTP", order = 5 }
+    "Concurrency" = { icon = "⚡", description = "Goroutines and channels", displayName = "Concurrency", order = 6 }
+    "Cryptography" = { icon = "🔐", description = "Encryption and hashing", displayName = "Cryptography", order = 7 }
+    "Testing" = { icon = "🧪", description = "Unit testing and benchmarks", displayName = "Testing", order = 8 }
+    "Web" = { icon = "🌐", description = "Web development with Go", displayName = "Web", order = 9 }
+    
+  [params.defaultCategoryConfig]
+    icon = "📚"
+    description = "Go programming examples"
+    displayName = "Other"
+    order = 100

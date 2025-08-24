@@ -2,6 +2,9 @@
 <div class="container mx-auto px-4 py-10">
     <h1 class="text-4xl font-bold mb-8">{{ .Title }}</h1>
     <meta name="robots" content="noindex, follow">
+
+    {{ if eq .Title "Categories" }}
+    <!-- 显示所有分类 -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
         {{ $hasPosts := false }}
@@ -11,18 +14,69 @@
         {{ end }}
         {{ end }}
         {{ if $hasPosts }}
-        <a href="{{ (printf " /categories/%s/" ($name | urlize)) }}"
-            class="block bg-white p-6 rounded-lg border hover:shadow-lg transition">
-            <h2 class="text-xl font-semibold mb-2">{{ $name }}</h2>
-            <p class="text-sm text-gray-600">{{ len $taxonomy }} posts</p>
-            {{ with $.Site.GetPage (printf "/categories/%s/_index.md" ($name | urlize)) }}
+        {{ $categoryConfig := $.Site.Params.defaultCategoryConfig }}
+        {{ if isset $.Site.Params.categoryConfig $name }}
+        {{ $categoryConfig = index $.Site.Params.categoryConfig $name }}
+        {{ end }}
+
+        {{ $categoryPage := $.Site.GetPage (printf "/categories/%s" ($name | urlize)) }}
+        {{ $categoryURL := "" }}
+        {{ if $categoryPage }}
+        {{ $categoryURL = $categoryPage.RelPermalink }}
+        {{ else }}
+        {{ $categoryURL = printf "/categories/%s/" ($name | urlize) }}
+        {{ end }}
+        <a href="{{ $categoryURL }}"
+            class="block bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1">
+            <h2 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">{{ $categoryConfig.displayName }}</h2>
+            <p class="text-sm text-gray-600 dark:text-gray-300">{{ len $taxonomy }} posts</p>
+            {{ with $.Site.GetPage (printf "/categories/%s" ($name | urlize)) }}
             {{ if .Description }}
-            <p class="text-xs text-gray-500 mt-2">{{ .Description }}</p>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">{{ .Description }}</p>
             {{ end }}
             {{ end }}
         </a>
         {{ end }}
         {{ end }}
     </div>
+    {{ else if eq .Title "Tags" }}
+    <!-- 显示所有标签 -->
+    <div
+        class="flex flex-wrap justify-center gap-4 mb-12 p-6">
+        {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+        {{ $hasPosts := false }}
+        {{ range $taxonomy }}
+        {{ if eq .Page.Section "posts" }}
+        {{ $hasPosts = true }}
+        {{ end }}
+        {{ end }}
+
+        {{ if $hasPosts }}
+        {{ $tagPage := $.Site.GetPage (printf "/tags/%s" ($name | urlize)) }}
+        {{ $tagURL := "" }}
+        {{ if $tagPage }}
+        {{ $tagURL = $tagPage.RelPermalink }}
+        {{ else }}
+        {{ $tagURL = printf "/tags/%s/" ($name | urlize) }}
+        {{ end }}
+
+        {{ $postCount := len $taxonomy }}
+        {{ $fontSize := add 0.9 (div (sub (math.Log (add $postCount 1)) (math.Log 1)) (sub (math.Log 30) (math.Log 1)))
+        }}
+        {{ $fontSize = cond (lt $fontSize 0.9) 0.9 $fontSize }}
+        {{ $fontSize = cond (gt $fontSize 1.8) 1.8 $fontSize }}
+
+        <a href="{{ $tagURL }}"
+            class="inline-flex items-center px-4 py-2 border"
+            style="font-size: {{ $fontSize }}rem;">
+            <span>{{ $name }}</span>
+            <span
+                class="ml-2 text-xs px-2 py-0.5 rounded-full">({{
+                $postCount }})</span>
+        </a>
+        {{ end }}
+        {{ end }}
+    </div>
+    {{ end }}
 </div>
 {{ end }}

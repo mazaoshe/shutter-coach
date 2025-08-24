@@ -5,36 +5,39 @@
 -->
 <!-- Hero Section -->
 <section class="container mx-auto px-4 pt-16 pb-12">
-  <div class="text-center max-w-4xl mx-auto animate-fade-in">
-    <h1 class="text-5xl md:text-6xl font-bold mb-6">
-      <span class="text-gradient">Go Snippets</span>
-    </h1>
-    <p class="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
-      Practical Go code examples for everyday development.
-      Copy, paste, and learn from real-world solutions.
-    </p>
+    <div class="text-center max-w-4xl mx-auto animate-fade-in">
+        <h1 class="text-5xl md:text-6xl font-bold mb-6">
+            <span class="text-gradient">Go Snippets</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
+            Practical Go code examples for everyday development.
+            Copy, paste, and learn from real-world solutions.
+        </p>
 
-    <!-- Search Bar -->
-    <div class="relative max-w-2xl mx-auto mb-12">
-      <i data-lucide="search" class="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400"></i>
-      <input type="text" placeholder="Search Go snippets... (e.g., time parsing, JSON, HTTP)"
-        class="input pl-12 pr-4 py-6 text-lg rounded-xl shadow-elegant w-full" />
-    </div>
+        <!-- Search Bar -->
+        <div class="relative max-w-2xl mx-auto mb-12">
+            <i data-lucide="search"
+                class="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400"></i>
+            <input type="text" placeholder="Search Go snippets... (e.g., time parsing, JSON, HTTP)"
+                class="input pl-12 pr-4 py-6 text-lg rounded-xl shadow-elegant w-full" />
+        </div>
 
-    <!-- Stats -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-      <div class="text-center">
-        <div class="text-3xl font-bold text-cyan-500 mb-2">50+</div>
-        <div class="text-gray-600">Code Snippets</div>
-      </div>
-      <div class="text-center">
-        <div class="text-3xl font-bold text-cyan-500 mb-2">8</div>
-        <div class="text-gray-600">Categories</div>
-      </div>
-      <div class="text-center">
-        <div class="text-3xl font-bold text-cyan-500 mb-2">100%</div>
-        <div class="text-gray-600">Free & Open</div>
-      </div>
+        <!-- Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+            <div class="text-center">
+                <div class="text-3xl font-bold text-cyan-500 mb-2">{{ len (where .Site.RegularPages "Section" "posts")
+                    }}
+                </div>
+                <div class="text-gray-600">Code Snippets</div>
+            </div>
+            <div class="text-center">
+                <div class="text-3xl font-bold text-cyan-500 mb-2">{{ len .Site.Taxonomies.categories }}</div>
+                <div class="text-gray-600">Categories</div>
+            </div>
+            <div class="text-center">
+                <div class="text-3xl font-bold text-cyan-500 mb-2">100%</div>
+                <div class="text-gray-600">Free & Open</div>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
