@@ -34,7 +34,13 @@
                 <div class="hidden md:flex items-center space-x-4">
                     <div id="search-trigger" role="button" aria-controls="search-dialog" tabindex="0"
                         class="flex items-center w-64 md:w-80 lg:w-96 px-3 py-2 border border-gray-300 rounded-md bg-white text-gray-500 cursor-pointer hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-cyan-500/50">
-                        <i data-lucide="search" class="h-5 w-5 mr-2"></i>
+                        <div class="h-6 w-5 mr-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                            </svg>
+                        </div>
                         <span class="text-sm">Search snippets...</span>
                         <span class="ml-auto text-xs text-gray-400 hidden lg:inline">⌘K</span>
                     </div>
@@ -44,8 +50,19 @@
                 <button id="mobile-menu-toggle"
                     class="md:hidden inline-flex items-center justify-center rounded-md p-2 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
                     aria-controls="mobile-menu" aria-expanded="false">
-                    <i data-lucide="menu" id="menu-icon" class="h-6 w-6"></i>
-                    <i data-lucide="x" id="close-icon" class="h-6 w-6 hidden"></i>
+                    <div id="menu-icon" class="h-6 w-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                    </div>
+                    <div id="close-icon" class="h-6 w-6 hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                        </svg>
+                    </div>
                 </button>
             </div>
 
@@ -63,7 +80,13 @@
                     </a>
                     <div id="mobile-search-trigger"
                         class="flex items-center px-3 py-2 border border-gray-300 rounded-md bg-white text-gray-500 cursor-pointer">
-                        <i data-lucide="search" class="h-5 w-5 mr-2"></i>
+                        <div class="h-6 w-5 mr-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                            </svg>
+                        </div>
                         <span class="text-sm">Search...</span>
                     </div>
                 </div>
@@ -77,13 +100,8 @@
     <div class="relative bg-white dark:bg-gray-800 rounded-lg shadow-lg w-2/3 mt-[25vh] mx-auto overflow-hidden">
         <div class="p-9 border-b border-gray-200 dark:border-gray-700">
             <input type="text" id="modal-search-input"
-                class="w-full p-2 pl-10 border border-gray-300 dark:border-gray-600 rounded outline-none bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded outline-none bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                 placeholder="Search snippets..." />
-            <svg class="pointer-events-none absolute left-10 top-2/5 -translate-y-1/2 h-5 w-5 text-gray-400"
-                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
         </div>
         <ul id="modal-search-results"
@@ -93,7 +111,3 @@
             class="absolute top-1 right-2 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200 text-2xl">&times;</button>
     </div>
 </div>
-
-<script>
-    
-</script>
