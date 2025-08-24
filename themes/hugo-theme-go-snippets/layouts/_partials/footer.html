@@ -39,19 +39,11 @@
             <div class="space-y-4">
                 <h3 class="text-lg font-semibold">Popular Categories</h3>
                 <ul class="space-y-2">
-                    {{ $categories := slice }}
-                    {{ range $name, $taxonomy := site.Taxonomies.categories }}
-                    {{ $count := len $taxonomy }}
-                    {{ $category := dict "name" $name "count" $count "page" (site.GetPage (printf "/categories/%s"
-                    $name)) }}
-                    {{ $categories = $categories | append $category }}
-                    {{ end }}
-                    {{ $sortedCategories := sort $categories "count" "desc" }}
-                    {{ range first 4 $sortedCategories }}
+                    {{ range first 4 (where site.Pages "Type" "categories") }}
                     <li>
-                        <a href="{{ .page.Permalink }}"
+                        <a href="{{ .Permalink }}"
                             class="text-muted-foreground hover:text-primary transition-colors text-sm">
-                            {{ .page.Title }}
+                            {{ .Title }}
                         </a>
                     </li>
                     {{ end }}

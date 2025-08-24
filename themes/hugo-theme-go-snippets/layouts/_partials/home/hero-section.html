@@ -9,7 +9,7 @@
         <h1 class="text-5xl md:text-6xl font-bold mb-6">
             <span class="text-gradient">Go Snippets</span>
         </h1>
-        <p class="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
+        <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
             Practical Go code examples for everyday development.
             Copy, paste, and learn from real-world solutions.
         </p>
@@ -18,8 +18,14 @@
         <div class="relative max-w-2xl mx-auto mb-12">
             <i data-lucide="search"
                 class="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400"></i>
-            <input type="text" placeholder="Search Go snippets... (e.g., time parsing, JSON, HTTP)"
-                class="input pl-12 pr-4 py-6 text-lg rounded-xl shadow-elegant w-full" />
+            <input type="text" id="search-input" placeholder="Search Go snippets... (e.g., time parsing, JSON, HTTP)"
+                class="input pl-12 pr-4 py-6 text-lg rounded-xl shadow-elegant w-full">
+            <!-- 搜索结果下拉框 -->
+            <div id="search-dropdown" class="absolute left-0 right-0 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-lg mt-2 hidden z-10">
+                <div id="search-results" class="max-h-80 overflow-y-auto">
+                    <!-- 搜索结果将在这里显示 -->
+                </div>
+            </div>
         </div>
 
         <!-- Stats -->
@@ -28,16 +34,94 @@
                 <div class="text-3xl font-bold text-cyan-500 mb-2">{{ len (where .Site.RegularPages "Section" "posts")
                     }}
                 </div>
-                <div class="text-gray-600">Code Snippets</div>
+                <div class="text-gray-600 dark:text-gray-400">Code Snippets</div>
             </div>
             <div class="text-center">
                 <div class="text-3xl font-bold text-cyan-500 mb-2">{{ len .Site.Taxonomies.categories }}</div>
-                <div class="text-gray-600">Categories</div>
+                <div class="text-gray-600 dark:text-gray-400">Categories</div>
             </div>
             <div class="text-center">
                 <div class="text-3xl font-bold text-cyan-500 mb-2">100%</div>
-                <div class="text-gray-600">Free & Open</div>
+                <div class="text-gray-600 dark:text-gray-400">Free & Open</div>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+// 搜索功能实现
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('search-input');
+    const searchDropdown = document.getElementById('search-dropdown');
+    const searchResults = document.getElementById('search-results');
+    
+    // 获取搜索索引
+    fetch('/index.json')
+        .then(response => response.json())
+        .then(data => {
+            searchInput.addEventListener('input', function() {
+                const query = this.value.trim().toLowerCase();
+                if (query.length === 0) {
+                    searchDropdown.classList.add('hidden');
+                    searchResults.innerHTML = '';
+                    return;
+                }
+                
+                // 执行搜索
+                const results = data.filter(item => {
+                    return (
+                        (item.title && item.title.toLowerCase().includes(query)) ||
+                        (item.description && item.description.toLowerCase().includes(query)) ||
+                        (item.content && item.content.toLowerCase().includes(query)) ||
+                        (item.tags && item.tags.some(tag => tag.toLowerCase().includes(query)))
+                    );
+                });
+                
+                // 显示结果
+                displayResults(results, query);
+                searchDropdown.classList.remove('hidden');
+            });
+        })
+        .catch(error => {
+            console.error('Error loading search index:', error);
+        });
+    
+    // 点击其他地方隐藏下拉框
+    document.addEventListener('click', function(event) {
+        if (!searchInput.contains(event.target) && !searchDropdown.contains(event.target)) {
+            searchDropdown.classList.add('hidden');
+        }
+    });
+    
+    function displayResults(results, query) {
+        if (results.length === 0) {
+            searchResults.innerHTML = '<div class="p-4 text-gray-500 dark:text-gray-400 text-center">No results found</div>';
+            return;
+        }
+        
+        // 使用安全的模板字符串避免与Hugo模板语法冲突
+        let resultsHTML = '';
+        results.slice(0, 8).forEach(item => {
+            resultsHTML += '<a href="' + item.permalink + '" class="block p-4 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition duration-200 no-underline">';
+            resultsHTML += '<h3 class="font-semibold text-gray-900 dark:text-white">' + highlightText(item.title, query) + '</h3>';
+            resultsHTML += '<p class="text-sm text-gray-600 dark:text-gray-300 mt-1">' + highlightText(item.description || '', query) + '</p>';
+            if (item.tags && item.tags.length > 0) {
+                resultsHTML += '<div class="flex flex-wrap gap-1 mt-2">';
+                item.tags.forEach(tag => {
+                    resultsHTML += '<span class="px-2 py-1 text-xs rounded-full bg-gray-100 dark:bg-gray-600 text-gray-600 dark:text-gray-300">' + tag + '</span>';
+                });
+                resultsHTML += '</div>';
+            }
+            resultsHTML += '</a>';
+        });
+        
+        searchResults.innerHTML = resultsHTML;
+    }
+    
+    function highlightText(text, query) {
+        if (!query) return text;
+        const regex = new RegExp(`(${query})`, 'gi');
+        return text.replace(regex, '<span class="bg-yellow-200 dark:bg-yellow-600 text-gray-900 dark:text-gray-900">$1</span>');
+    }
+});
+</script>

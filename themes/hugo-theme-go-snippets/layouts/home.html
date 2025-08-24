@@ -1,11 +1,12 @@
 {{ define "main" }}
 <main id="main-content">
-  <!-- Home Page -->
-  <div id="home-page" class="page">
-    {{ partial "home/hero-section.html" . }}
-    {{ partial "home/categories-grid.html" . }}
-    {{ partial "home/featured-snippets.html" . }}
-    {{ partial "home/CTA-section.html" . }}
-  </div>
+    <!-- Home Page -->
+    <div id="home-page" class="page">
+        {{ partial "home/hero-section.html" . }}
+        {{ partial "home/categories-grid.html" . }}
+        {{ partial "home/featured-snippets.html" . }}
+        {{ partial "home/tags-cloud.html" . }}
+        {{ partial "home/CTA-section.html" . }}
+    </div>
 </main>
 {{ end }}

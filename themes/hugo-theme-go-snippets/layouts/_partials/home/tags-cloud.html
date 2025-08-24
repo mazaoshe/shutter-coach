@@ -1,0 +1,39 @@
+<section class="container mx-auto px-6 py-16">
+  <h2 class="text-3xl font-bold text-center mb-4">Popular Tags</h2>
+  <p class="text-center text-gray-600 dark:text-gray-400 mb-12">
+    Browse code examples by tags
+  </p>
+
+  <div class="flex flex-wrap justify-center gap-3 mb-12 p-6 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+    {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+      {{ $hasPosts := false }}
+      {{ range $taxonomy }}
+        {{ if eq .Page.Section "posts" }}
+          {{ $hasPosts = true }}
+        {{ end }}
+      {{ end }}
+      
+      {{ if $hasPosts }}
+        {{ $tagPage := $.Site.GetPage (printf "/tags/%s" ($name | urlize)) }}
+        {{ $tagURL := "" }}
+        {{ if $tagPage }}
+          {{ $tagURL = $tagPage.RelPermalink }}
+        {{ else }}
+          {{ $tagURL = printf "/tags/%s/" ($name | urlize) }}
+        {{ end }}
+        
+        {{ $postCount := len $taxonomy }}
+        {{ $fontSize := add 0.9 (div (sub (math.Log (add $postCount 1)) (math.Log 1)) (sub (math.Log 30) (math.Log 1))) }}
+        {{ $fontSize = cond (lt $fontSize 0.9) 0.9 $fontSize }}
+        {{ $fontSize = cond (gt $fontSize 1.8) 1.8 $fontSize }}
+        
+        <a href="{{ $tagURL }}" 
+           class="inline-flex items-center px-4 py-2 rounded-full border border-gray-200 dark:border-gray-700 hover:border-cyan-500 dark:hover:border-cyan-400 transition-all duration-300 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:text-cyan-600 dark:hover:text-cyan-300"
+           style="font-size: {{ $fontSize }}rem;">
+          <span>{{ $name }}</span>
+          <span class="ml-2 text-xs px-2 py-0.5 bg-gray-100 dark:bg-gray-600 text-gray-600 dark:text-gray-300 rounded-full">{{ $postCount }}</span>
+        </a>
+      {{ end }}
+    {{ end }}
+  </div>
+</section>
