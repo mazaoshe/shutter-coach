@@ -1,6 +1,6 @@
 baseURL = 'https://shuttercoach.com/'
 languageCode = 'en-us'
-title = 'ShutterCoach - Go Code Snippets & Examples'
+title = 'Golang Snippets – Practical Go code examples for everyday development'
 theme = 'hugo-theme-go-snippets'
 enableRobotsTXT = true
 buildDrafts = false
@@ -70,7 +70,7 @@ relativeURLs = false
     tabWidth = 2
 
 [params]
-  description = "Providing high-quality Go language code snippets to help developers solve problems quickly and improve development efficiency."
+  description = "Golang code examples, Go snippets for developers. Providing high-quality Golang language code snippets to help developers solve problems quickly and improve development efficiency."
   author = "Silas"
   defaultImage = "https://image.ypplog.cn/go-snippets-og-image.avif"
 
@@ -79,18 +79,30 @@ relativeURLs = false
     github = "https://github.com/mazaoshe"
     
   [params.categoryConfig]
-    "DateTime" = { icon = "⏰", description = "Working with time, dates, and duration", displayName = "DateTime", order = 1 }
-    "Strings" = { icon = "📝", description = "String manipulation and formatting", displayName = "Strings", order = 2 }
-    "JSON" = { icon = "📋", description = "JSON parsing and serialization", displayName = "JSON", order = 3 }
-    "Files" = { icon = "📁", description = "File operations and input/output", displayName = "Files", order = 4 }
-    "HTTP" = { icon = "🌐", description = "HTTP clients and servers", displayName = "HTTP", order = 5 }
-    "Concurrency" = { icon = "⚡", description = "Goroutines and channels", displayName = "Concurrency", order = 6 }
-    "Cryptography" = { icon = "🔐", description = "Encryption and hashing", displayName = "Cryptography", order = 7 }
-    "Testing" = { icon = "🧪", description = "Unit testing and benchmarks", displayName = "Testing", order = 8 }
-    "Web" = { icon = "🌐", description = "Web development with Go", displayName = "Web", order = 9 }
+    "DateTime" = { icon = "⏰", description = "Working with time, dates, and duration in Golang", displayName = "DateTime", order = 1 }
+    "Strings" = { icon = "📝", description = "String manipulation and formatting in Golang", displayName = "Strings", order = 2 }
+    "JSON" = { icon = "📋", description = "JSON parsing and serialization in Golang", displayName = "JSON", order = 3 }
+    "Files" = { icon = "📁", description = "File operations and input/output in Golang", displayName = "Files", order = 4 }
+    "HTTP" = { icon = "🌐", description = "HTTP clients and servers in Golang", displayName = "HTTP", order = 5 }
+    "Concurrency" = { icon = "⚡", description = "Goroutines and channels in Golang", displayName = "Concurrency", order = 6 }
+    "Cryptography" = { icon = "🔐", description = "Encryption and hashing in Golang", displayName = "Cryptography", order = 7 }
+    "Testing" = { icon = "🧪", description = "Unit testing and benchmarks in Golang", displayName = "Testing", order = 8 }
+    "Web" = { icon = "🌐", description = "Web development with Golang", displayName = "Web", order = 9 }
     
   [params.defaultCategoryConfig]
     icon = "📚"
-    description = "Go programming examples"
+    description = "Golang programming examples"
     displayName = "Other"
     order = 100
+
+  [params.keywords]
+    keywords = [
+      "Golang snippets",
+      "Golang examples", 
+      "Golang code snippets",
+      "Go code examples",
+      "Practical Go code",
+      "Go programming",
+      "Go development",
+      "Go tutorial"
+    ]

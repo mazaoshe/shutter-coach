@@ -1,6 +1,6 @@
 {{ define "main" }}
 <div class="container mx-auto px-4 py-10">
-    <h1 class="text-4xl font-bold mb-8">{{ .Title }}</h1>
+    <h1 class="text-4xl font-bold mb-8">Golang {{ .Title }}</h1>
     <meta name="robots" content="noindex, follow">
 
     {{ if eq .Title "Categories" }}
@@ -28,8 +28,8 @@
         {{ end }}
         <a href="{{ $categoryURL }}"
             class="block bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1">
-            <h2 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">{{ $categoryConfig.displayName }}</h2>
-            <p class="text-sm text-gray-600 dark:text-gray-300">{{ len $taxonomy }} posts</p>
+            <h2 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Golang {{ $categoryConfig.displayName }}</h2>
+            <p class="text-sm text-gray-600 dark:text-gray-300">{{ len $taxonomy }} Golang snippets</p>
             {{ with $.Site.GetPage (printf "/categories/%s" ($name | urlize)) }}
             {{ if .Description }}
             <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">{{ .Description }}</p>
@@ -41,6 +41,10 @@
     </div>
     {{ else if eq .Title "Tags" }}
     <!-- 显示所有标签 -->
+    <p class="text-center mb-12 max-w-3xl mx-auto">
+      Browse our collection of Golang tags to find specific Go code examples and snippets. 
+      These tags represent common topics and techniques in Go programming.
+    </p>
     {{ partial "home/tags-cloud.html" . }}
     {{ end }}
 </div>
