@@ -1,6 +1,6 @@
 ---
-title: "Making HTTP Requests in Go"
-description: "Learn how to make HTTP requests in Go using the net/http package with proper error handling and response processing."
+title: "Making HTTP Requests in Golang"
+description: "Learn how to make HTTP requests in Golang using the net/http package with proper error handling and response processing in Go programming."
 date: 2025-08-16T15:00:00+08:00
 draft: false
 categories: ["Http"]
@@ -10,12 +10,12 @@ tags:
   - "web"
   - "client"
 slug: "go-http-requests"
-keywords: "Go HTTP client, making HTTP requests in Go, Go net/http package, HTTP GET request example"
+keywords: "Golang HTTP client, making HTTP requests in Go, Golang net/http package, HTTP GET request example, Go web client"
 ---
 
-## Making HTTP Requests in Go
+## Making HTTP Requests in Golang
 
-Learn how to make HTTP requests in Go using the net/http package with proper error handling and response processing.
+Learn how to make HTTP requests in Golang using the net/http package with proper error handling and response processing in Go programming. These practical Golang code snippets show you how to build HTTP clients and interact with web APIs effectively.
 
 ```go
 package main

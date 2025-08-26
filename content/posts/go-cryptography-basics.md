@@ -1,6 +1,6 @@
 ---
-title: "Go Cryptography Basics"
-description: "Learn how to perform basic cryptographic operations in Go, including hashing, encryption, and decryption using the crypto packages."
+title: "Golang Cryptography Basics"
+description: "Learn how to perform basic cryptographic operations in Golang, including hashing, encryption, and decryption using the crypto packages with practical Go code examples."
 date: 2025-08-17T16:00:00+08:00
 draft: false
 categories: ["Cryptography"]
@@ -11,12 +11,12 @@ tags:
   - "security"
   - "Code Example"
 slug: "go-cryptography-basics"
-keywords: "Go cryptography, hashing in Go, encryption in Go, Go crypto package, secure coding in Go"
+keywords: "Golang cryptography, hashing in Go, encryption in Go, Golang crypto package, secure coding in Go, Go security examples"
 ---
 
-## Go Cryptography Basics
+## Golang Cryptography Basics
 
-Learn how to perform basic cryptographic operations in Go, including hashing, encryption, and decryption using the crypto packages.
+Learn how to perform basic cryptographic operations in Golang, including hashing, encryption, and decryption using the crypto packages with practical Go code examples. These Golang code snippets demonstrate essential security practices for protecting data in your Go applications.
 
 ```go
 package main

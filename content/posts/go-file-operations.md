@@ -1,6 +1,6 @@
 ---
-title: "Go File Operations"
-description: "Learn how to perform file operations in Go, including reading, writing, and manipulating files and directories."
+title: "Golang File Operations"
+description: "Learn how to perform file operations in Golang, including reading, writing, and manipulating files and directories with practical Go code examples."
 date: 2025-08-17T13:00:00+08:00
 draft: false
 categories: ["Files"]
@@ -12,12 +12,12 @@ tags:
   - "filesystem"
   - "Code Example"
 slug: "go-file-operations"
-keywords: "Go file operations, reading files in Go, writing files in Go, Go filesystem operations, file IO in Go"
+keywords: "Golang file operations, reading files in Go, writing files in Go, Golang filesystem operations, file IO in Go, Go file manipulation"
 ---
 
-## Go File Operations
+## Golang File Operations
 
-Learn how to perform file operations in Go, including reading, writing, and manipulating files and directories.
+Learn how to perform file operations in Golang, including reading, writing, and manipulating files and directories with practical Go code examples. These Golang code snippets demonstrate common file operations that Go developers encounter in everyday development.
 
 ```go
 package main
