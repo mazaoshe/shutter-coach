@@ -133,3 +133,56 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    // 查找所有代码块容器
+    const codeBlocks = document.querySelectorAll('pre');
+
+    codeBlocks.forEach(block => {
+        // 创建复制按钮
+        const copyButton = document.createElement('button');
+        copyButton.className = 'copy-code-button absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-md bg-gray-700 hover:bg-gray-600 text-gray-200 hover:text-white opacity-0 transition-opacity duration-200 cursor-pointer';
+        copyButton.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" class="copied-icon w-4 h-4 hidden text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+      </svg>
+    `;
+        copyButton.title = 'Copy to clipboard';
+
+        // 显示/隐藏按钮
+        block.style.position = 'relative';
+        block.addEventListener('mouseenter', () => {
+            copyButton.style.opacity = '1';
+        });
+
+        block.addEventListener('mouseleave', () => {
+            copyButton.style.opacity = '0';
+        });
+
+        // 复制功能
+        copyButton.addEventListener('click', () => {
+            const code = block.querySelector('code');
+            if (code) {
+                navigator.clipboard.writeText(code.innerText).then(() => {
+                    // 显示复制成功状态
+                    copyButton.querySelector('.copy-icon').classList.add('hidden');
+                    copyButton.querySelector('.copied-icon').classList.remove('hidden');
+
+                    // 2秒后恢复原状态
+                    setTimeout(() => {
+                        copyButton.querySelector('.copy-icon').classList.remove('hidden');
+                        copyButton.querySelector('.copied-icon').classList.add('hidden');
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy code: ', err);
+                });
+            }
+        });
+
+        // 将按钮添加到代码块
+        block.appendChild(copyButton);
+    });
+});

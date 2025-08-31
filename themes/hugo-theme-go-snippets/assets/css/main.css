@@ -138,6 +138,48 @@
         @apply text-2xl font-semibold mb-4
     }
 
+    /* 代码块样式修复 */
+    pre {
+        @apply overflow-x-auto rounded-lg p-4 my-4 relative;
+        background-color: #282a36;
+    }
+
+    code {
+        @apply font-mono text-sm;
+    }
+
+    pre code {
+        @apply font-mono text-sm;
+        background-color: transparent;
+        color: #f8f8f2;
+    }
+
+    :not(pre) > code {
+        @apply px-1.5 py-0.5 rounded bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200;
+    }
+
+    /* 修复 @tailwindcss/typography 插件的代码块样式 */
+    .prose :where(pre):not(:where([class~="not-prose"] *)) {
+        @apply bg-gray-800 rounded-lg overflow-hidden;
+    }
+
+    .prose :where(pre):not(:where([class~="not-prose"] *)) code {
+        background-color: transparent;
+        color: #f8f8f2;
+    }
+
+    .prose :where(code):not(:where([class~="not-prose"] *)) {
+        background-color: #f3f4f6;
+        color: #374151;
+        border-radius: 0.25rem;
+        padding: 0.2em 0.4em;
+        font-weight: 400;
+    }
+
+    .dark .prose :where(code):not(:where([class~="not-prose"] *)) {
+        background-color: #374151;
+        color: #e5e7eb;
+    }
 
     /* Helpers */
     .text-gradient {
