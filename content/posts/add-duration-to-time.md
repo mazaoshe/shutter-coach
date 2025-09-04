@@ -1,7 +1,7 @@
 ---
 title: "How to Add Time Duration in Golang? Add Hours, Minutes, Seconds"
 description: "Learn how to add duration to time in Golang using time.Add(). Simple Go code example showing how to add hours, minutes, seconds, and days to time objects."
-date: 2025-01-25T15:30:00+08:00
+date: 2025-09-04T17:30:00+08:00
 draft: false
 categories: ["DateTime"]
 tags:
