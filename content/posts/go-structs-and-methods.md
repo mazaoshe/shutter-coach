@@ -1,17 +1,18 @@
 ---
-title: "Golang Structs and Methods"
-description: "Learn how to define and use structs and methods in Golang, including struct embedding and method receivers with practical Go code examples."
+title: Golang Structs and Methods
+description: Learn how to define and use structs and methods in Golang, including struct embedding and method receivers with practical Go code examples.
 date: 2025-08-17T14:00:00+08:00
 draft: false
-categories: ["concurrency"]
-tags: 
-  - "struct"
-  - "method"
-  - "embedding"
-  - "receiver"
-  - "Code Example"
-slug: "go-structs-and-methods"
-keywords: "Golang structs, Go methods, struct embedding, method receivers, Golang programming structs, Go object oriented programming"
+categories:
+  - Concurrency
+tags:
+  - struct
+  - method
+  - embedding
+  - receiver
+  - Code Example
+slug: go-structs-and-methods
+keywords: Golang structs, Go methods, struct embedding, method receivers, Golang programming structs, Go object oriented programming
 ---
 
 ## Golang Structs and Methods

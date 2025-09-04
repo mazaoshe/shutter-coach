@@ -1,17 +1,18 @@
 ---
-title: "Golang Concurrency Basics"
-description: "Learn the basics of Golang concurrency with goroutines and channels, including how to create and synchronize concurrent operations in Go programming."
+title: Golang Concurrency Basics
+description: Learn the basics of Golang concurrency with goroutines and channels, including how to create and synchronize concurrent operations in Go programming.
 date: 2025-08-17T10:00:00+08:00
 draft: false
-categories: ["Concurrency"]
-tags: 
-  - "concurrency"
-  - "goroutines"
-  - "channels"
-  - "parallel"
-  - "Code Example"
-slug: "go-concurrency-basics"
-keywords: "Golang concurrency, goroutines, channels, Golang parallel processing, concurrent programming in Go, Go concurrency patterns"
+categories:
+  - Concurrency
+tags:
+  - concurrency
+  - goroutines
+  - channels
+  - parallel
+  - Code Example
+slug: go-concurrency-basics
+keywords: Golang concurrency, goroutines, channels, Golang parallel processing, concurrent programming in Go, Go concurrency patterns
 ---
 
 ## Golang Concurrency Basics

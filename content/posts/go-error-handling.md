@@ -1,17 +1,18 @@
 ---
-title: "Golang Error Handling"
-description: "Learn how to handle errors in Golang effectively, including creating custom errors and using error wrapping for better debugging in Go programming."
+title: Golang Error Handling
+description: Learn how to handle errors in Golang effectively, including creating custom errors and using error wrapping for better debugging in Go programming.
 date: 2025-08-17T11:00:00+08:00
 draft: false
-categories: ["concurrency"]
-tags: 
-  - "error"
-  - "handling"
-  - "custom errors"
-  - "wrapping"
-  - "Code Example"
-slug: "go-error-handling"
-keywords: "Golang error handling, custom errors in Go, error wrapping, Golang error patterns, Go programming errors, error handling in Golang"
+categories:
+  - Concurrency
+tags:
+  - error
+  - handling
+  - custom errors
+  - wrapping
+  - Code Example
+slug: go-error-handling
+keywords: Golang error handling, custom errors in Go, error wrapping, Golang error patterns, Go programming errors, error handling in Golang
 ---
 
 ## Golang Error Handling

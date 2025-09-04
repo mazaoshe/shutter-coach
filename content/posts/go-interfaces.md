@@ -1,17 +1,18 @@
 ---
-title: "Golang Interfaces"
-description: "Learn how to use interfaces in Golang to write flexible and testable code, including interface definition and implementation with practical Go programming examples."
+title: Golang Interfaces
+description: Learn how to use interfaces in Golang to write flexible and testable code, including interface definition and implementation with practical Go programming examples.
 date: 2025-08-17T12:00:00+08:00
 draft: false
-categories: ["concurrency"]
-tags: 
-  - "interface"
-  - "polymorphism"
-  - "abstraction"
-  - "duck typing"
-  - "Code Example"
-slug: "go-interfaces"
-keywords: "Golang interfaces, interface implementation, polymorphism in Go, Golang duck typing, interface design patterns, Go interface examples"
+categories:
+  - Concurrency
+tags:
+  - interface
+  - polymorphism
+  - abstraction
+  - duck typing
+  - Code Example
+slug: go-interfaces
+keywords: Golang interfaces, interface implementation, polymorphism in Go, Golang duck typing, interface design patterns, Go interface examples
 ---
 
 ## Golang Interfaces

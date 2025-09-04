@@ -1,16 +1,17 @@
 ---
 title: "Golang Type Assertion: A Complete Guide with Practical Examples"
-description: "Learn how to use type assertions in Golang to extract underlying values from interface types with practical code examples. Understand the syntax, best practices, and common use cases."
+description: Learn how to use type assertions in Golang to extract underlying values from interface types with practical code examples. Understand the syntax, best practices, and common use cases.
 date: 2025-08-31T12:00:00+08:00
 draft: false
-categories: ["concurrency"]
-tags: 
-  - "type assertion"
-  - "interface"
-  - "reflection"
-  - "Code Example"
-slug: "golang-type-assertion"
-keywords: "golang type assertion, interface type assertion, go type assertion, type assertion in go, golang interface conversion, go interface type checking"
+categories:
+  - Concurrency
+tags:
+  - type assertion
+  - interface
+  - reflection
+  - Code Example
+slug: golang-type-assertion
+keywords: golang type assertion, interface type assertion, go type assertion, type assertion in go, golang interface conversion, go interface type checking
 ---
 
 ## Golang Type Assertion: A Complete Guide with Practical Examples
